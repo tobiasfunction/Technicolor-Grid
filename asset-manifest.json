@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Technicolor-Grid/static/css/main.d0d68472.css",
+    "main.js": "/Technicolor-Grid/static/js/main.ad59c46f.js",
+    "static/js/787.33c2c2b2.chunk.js": "/Technicolor-Grid/static/js/787.33c2c2b2.chunk.js",
+    "index.html": "/Technicolor-Grid/index.html",
+    "main.d0d68472.css.map": "/Technicolor-Grid/static/css/main.d0d68472.css.map",
+    "main.ad59c46f.js.map": "/Technicolor-Grid/static/js/main.ad59c46f.js.map",
+    "787.33c2c2b2.chunk.js.map": "/Technicolor-Grid/static/js/787.33c2c2b2.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d0d68472.css",
+    "static/js/main.ad59c46f.js"
+  ]
+}
