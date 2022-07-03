@@ -1,24 +1,14 @@
-import React, { useLayoutEffect, useState } from "react";
 import "./App.css";
+import { Simple, Pastel } from "./Modes.js";
+import React, { useLayoutEffect, useState } from "react";
 
 const Tile = (props) => {
-  const [color, setColor] = useState("#eee");
-
-  return (
-    <div
-      className="tile"
-      style={{
-        backgroundColor: color,
-        gridColumn: props.column,
-        gridRow: props.row,
-      }}
-      onMouseEnter={mouseEnter}
-    />
-  );
-  function mouseEnter() {
-    const random = Math.floor(Math.random() * 16777215).toString(16);
-    setColor("#" + random);
-  }
+  const mode = props.mode;
+  if (mode === "Simple")
+    return <Simple row={props.row} column={props.column} />;
+  if (mode === "Pastel")
+    return <Pastel row={props.row} column={props.column} />;
+  else return <div>Oops</div>;
 };
 
 const Grid = (props) => {
@@ -31,18 +21,49 @@ const Grid = (props) => {
   for (let i = 1; i <= targetRowCount; i++) {
     for (let j = 1; j <= tilesPerRow; j++) {
       tiles.push(
-        <Tile key={i + "/" + j} value={i + "/" + j} row={i} column={j} />
+        <Tile
+          key={i + "/" + j}
+          value={i + "/" + j}
+          row={i}
+          column={j}
+          mode={props.mode}
+        />
       );
     }
   }
   return tiles;
 };
 
-const App = (props) => {
+const App = () => {
+  const [currentMode, setCurrentMode] = useState("Simple");
+
+  const Menu = (props) => {
+    const simpleBtn = (
+      <button onClick={() => setCurrentMode("Simple")}>Simple</button>
+    );
+    const pastelBtn = (
+      <button onClick={() => setCurrentMode("Pastel")}>Pastel</button>
+    );
+
+    return (
+      <div id="buttons">
+        <div>
+          {simpleBtn} {pastelBtn}
+        </div>
+        <div>Current Mode: {currentMode}</div>
+        <div>
+          View on
+          <a href="https://github.com/tobiasfunction/color-grid">Github</a>.
+        </div>
+      </div>
+    );
+  };
+
   return (
     <div className="App">
+      <Menu />
       <div className="grid">
-        <Grid />
+        <Grid mode={currentMode} />
       </div>
     </div>
   );
