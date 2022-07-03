@@ -1,25 +1,60 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useLayoutEffect, useState } from "react";
+import "./App.css";
 
-function App() {
+const Tile = (props) => {
+  const [color, setColor] = useState("#eee")
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div
+      className="tile"
+      style={{
+        backgroundColor: color,
+        gridColumn: props.column,
+        gridRow: props.row,
+      }}
+    >
+      {props.value}
     </div>
   );
+};
+
+const Grid = (props) => {
+  const [windowWidth, windowHeight] = useWindowSize();
+  const tilesPerRow = Math.floor(windowWidth / 100);
+  const tileDim = Math.floor(windowWidth / tilesPerRow);
+  const targetRowCount = Math.ceil(window.innerHeight / tileDim);
+  const tiles = [];
+
+    for (let i = 1; i <= targetRowCount; i++) {
+      for (let j = 1; j <= tilesPerRow; j++) {
+        tiles.push(
+          <Tile key={i + "/" + j} value={i + "/" + j} row={i} column={j}/>
+        );
+      }
+    }
+  return tiles;
+};
+
+const App = (props) => {
+  return (
+    <div className="App">
+      <div className="grid">
+        <Grid />
+      </div>
+    </div>
+  );
+};
+
+function useWindowSize() {
+  const [size, setSize] = useState([0, 0]);
+  useLayoutEffect(() => {
+    function updateSize() {
+      setSize([window.innerWidth, window.innerHeight]);
+    }
+    window.addEventListener("resize", updateSize);
+    updateSize();
+    return () => window.removeEventListener("resize", updateSize);
+  }, []);
+  return size;
 }
 
 export default App;
