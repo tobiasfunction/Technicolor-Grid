@@ -3,6 +3,22 @@ body {
   overflow: hidden;
 }
 
+#buttons {
+  align-items: center;
+  background-color: rgba(255, 255, 255, .8);
+  border-radius: 5px;
+  bottom: 10px;
+  display: flex;
+  padding: 5px 10px;
+  position: absolute;
+  right: 10px;
+  transition: all 1s;
+}
+
+#buttons:hover {
+  background-color: rgba(255, 255, 255, 1);
+}
+
 .grid {
   box-sizing: border-box;
   display: grid;
