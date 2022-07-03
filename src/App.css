@@ -14,7 +14,6 @@ body {
 
 .tile {
   aspect-ratio: 1/1;
-  border: 1px solid #ccc;
   box-sizing: border-box;
   margin: 0px;
   padding: 5px;

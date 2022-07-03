@@ -2,7 +2,8 @@ import React, { useLayoutEffect, useState } from "react";
 import "./App.css";
 
 const Tile = (props) => {
-  const [color, setColor] = useState("#eee")
+  const [color, setColor] = useState("#eee");
+
   return (
     <div
       className="tile"
@@ -11,10 +12,13 @@ const Tile = (props) => {
         gridColumn: props.column,
         gridRow: props.row,
       }}
-    >
-      {props.value}
-    </div>
+      onMouseEnter={mouseEnter}
+    />
   );
+  function mouseEnter() {
+    const random = Math.floor(Math.random() * 16777215).toString(16);
+    setColor("#" + random);
+  }
 };
 
 const Grid = (props) => {
@@ -24,13 +28,13 @@ const Grid = (props) => {
   const targetRowCount = Math.ceil(window.innerHeight / tileDim);
   const tiles = [];
 
-    for (let i = 1; i <= targetRowCount; i++) {
-      for (let j = 1; j <= tilesPerRow; j++) {
-        tiles.push(
-          <Tile key={i + "/" + j} value={i + "/" + j} row={i} column={j}/>
-        );
-      }
+  for (let i = 1; i <= targetRowCount; i++) {
+    for (let j = 1; j <= tilesPerRow; j++) {
+      tiles.push(
+        <Tile key={i + "/" + j} value={i + "/" + j} row={i} column={j} />
+      );
     }
+  }
   return tiles;
 };
 
