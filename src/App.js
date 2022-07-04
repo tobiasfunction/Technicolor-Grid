@@ -61,7 +61,7 @@ const App = () => {
       <div id="buttons">
         <div>{menuOptions}</div>
         <div>
-          View on
+          View on{" "}
           <a href="https://github.com/tobiasfunction/color-grid">Github</a>.
         </div>
       </div>
@@ -69,7 +69,7 @@ const App = () => {
   };
 
   return (
-    <div className="App" style={{backgroundColor: currentMode.background}}>
+    <div className="App" style={{ backgroundColor: currentMode.background }}>
       <Menu />
       <div className="grid">
         <Grid mode={currentMode.name} />
