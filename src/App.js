@@ -1,11 +1,18 @@
 import "./App.css";
-import { Basic, Pastel, Tunnels } from "./Modes.js";
+import { Basic, Neon, Pastel, Tunnels } from "./Modes.js";
 import React, { useLayoutEffect, useState } from "react";
+
+const modes = () => [
+  { name: "Basic", background: "#ccc" },
+  { name: "Pastel", background: "#fff" },
+  { name: "Tunnels", background: "#000" },
+  { name: "Neon", background: "#000" },
+];
 
 const Tile = (props) => {
   const mode = props.mode;
-  if (mode === "Basic")
-    return <Basic row={props.row} column={props.column} />;
+  if (mode === "Basic") return <Basic row={props.row} column={props.column} />;
+  if (mode === "Neon") return <Neon row={props.row} column={props.column} />;
   if (mode === "Pastel")
     return <Pastel row={props.row} column={props.column} />;
   if (mode === "Tunnels")
@@ -15,6 +22,7 @@ const Tile = (props) => {
 
 const Grid = (props) => {
   const [windowWidth, windowHeight] = useWindowSize();
+
   const tilesPerRow = Math.floor(windowWidth / 100);
   const tileDim = Math.floor(windowWidth / tilesPerRow);
   const targetRowCount = Math.ceil(window.innerHeight / tileDim);
@@ -37,10 +45,15 @@ const Grid = (props) => {
 };
 
 const App = () => {
-  const [currentMode, setCurrentMode] = useState("Basic");
-  const modeList = ["Basic", "Pastel", "Tunnels"];
-  const menuOptions = modeList.map((option) => (
-    <button onClick={() => setCurrentMode(option)} disabled={(currentMode === option)}>{option}</button>
+  const [currentMode, setCurrentMode] = useState(modes()[0]);
+  const modeList = modes();
+  const menuOptions = modeList.map((mode) => (
+    <button
+      onClick={() => setCurrentMode(mode)}
+      disabled={currentMode.name === mode.name}
+    >
+      {mode.name}
+    </button>
   ));
 
   const Menu = (props) => {
@@ -56,10 +69,10 @@ const App = () => {
   };
 
   return (
-    <div className="App">
+    <div className="App" style={{backgroundColor: currentMode.background}}>
       <Menu />
       <div className="grid">
-        <Grid mode={currentMode} />
+        <Grid mode={currentMode.name} />
       </div>
     </div>
   );

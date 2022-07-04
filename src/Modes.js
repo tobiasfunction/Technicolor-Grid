@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 const Basic = (props) => {
-  const [color, setColor] = useState("#eee");
+  const [color, setColor] = useState();
 
   return (
     <div
@@ -21,7 +21,7 @@ const Basic = (props) => {
 };
 
 const Pastel = (props) => {
-  const [color, setColor] = useState("#eee");
+  const [color, setColor] = useState();
 
   return (
     <div
@@ -41,10 +41,55 @@ const Pastel = (props) => {
   }
 };
 
+const Neon = (props) => {
+  const [colorOne, setColorOne] = useState();
+  const [colorTwo, setColorTwo] = useState();
+  const column = `${props.column} / ${props.column}`;
+  const row = `${props.row} / ${props.row}`;
+
+  const tiles = [];
+
+    tiles.push(
+      <div
+        style={{
+          borderColor: colorOne,
+          borderRadius: "8px",
+          borderStyle: "solid",
+          borderWidth: "4px",
+          filter: "blur(2px)",
+          height: "80px",
+          margin: "10px",
+          position: "absolute",
+          transition: "all 1s",
+          width: "80px",
+        }}
+      />
+    )
+
+  return (
+    <div
+      className="tile"
+      style={{
+        gridColumn: column,
+        gridRow: row,
+      }}
+      onMouseEnter={mouseEnter}
+    >
+      {tiles}
+    </div>
+  );
+  function mouseEnter() {
+    const hue = Math.floor(Math.random() * 330);
+    const newColorOne = `hsl(${hue}, 100%, 60%)`;
+    const newColorTwo = `hsl(${hue + 20}, 100%, 60%)`;
+    setColorOne(newColorOne);
+    setColorTwo(newColorTwo);
+  }
+};
+
 const Tunnels = (props) => {
-  const [hue, setHue] = useState();
-  const [colorOne, setColorOne] = useState("#000");
-  const [colorTwo, setColorTwo] = useState("#000");
+  const [colorOne, setColorOne] = useState("#222");
+  const [colorTwo, setColorTwo] = useState("#222");
   const column = `${props.column} / ${props.column}`;
   const row = `${props.row} / ${props.row}`;
 
@@ -53,7 +98,7 @@ const Tunnels = (props) => {
   let side = 100;
   let margin = 0;
   let delay = 0;
-  let alternator = 0;
+  let alternator = true;
 
   while (side > 0) {
     tiles.push(
@@ -74,18 +119,16 @@ const Tunnels = (props) => {
         }}
       />
     );
-
     margin += 10;
     side -= 20;
-    alternator = alternator ? 0 : 1;
-    delay += 300;
+    alternator = !alternator;
+    delay += 150;
   }
 
   return (
     <div
       className="tile"
       style={{
-        backgroundColor: "#000",
         gridColumn: column,
         gridRow: row,
       }}
@@ -98,10 +141,9 @@ const Tunnels = (props) => {
     const hue = Math.floor(Math.random() * 330);
     const newColorOne = `hsl(${hue}, 100%, 60%)`;
     const newColorTwo = `hsl(${hue + 20}, 100%, 60%)`;
-    setHue(hue);
     setColorOne(newColorOne);
     setColorTwo(newColorTwo);
   }
 };
 
-export { Basic, Pastel, Tunnels };
+export { Basic, Neon, Pastel, Tunnels };
