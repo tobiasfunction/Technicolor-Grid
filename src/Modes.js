@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Simple = (props) => {
+const Basic = (props) => {
   const [color, setColor] = useState("#eee");
 
   return (
@@ -104,4 +104,4 @@ const Tunnels = (props) => {
   }
 };
 
-export { Simple, Pastel, Tunnels };
+export { Basic, Pastel, Tunnels };

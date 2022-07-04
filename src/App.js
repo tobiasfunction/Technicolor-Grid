@@ -1,11 +1,11 @@
 import "./App.css";
-import { Simple, Pastel, Tunnels } from "./Modes.js";
+import { Basic, Pastel, Tunnels } from "./Modes.js";
 import React, { useLayoutEffect, useState } from "react";
 
 const Tile = (props) => {
   const mode = props.mode;
-  if (mode === "Simple")
-    return <Simple row={props.row} column={props.column} />;
+  if (mode === "Basic")
+    return <Basic row={props.row} column={props.column} />;
   if (mode === "Pastel")
     return <Pastel row={props.row} column={props.column} />;
   if (mode === "Tunnels")
@@ -37,8 +37,8 @@ const Grid = (props) => {
 };
 
 const App = () => {
-  const [currentMode, setCurrentMode] = useState("Simple");
-  const modeList = ["Simple", "Pastel", "Tunnels"];
+  const [currentMode, setCurrentMode] = useState("Basic");
+  const modeList = ["Basic", "Pastel", "Tunnels"];
   const menuOptions = modeList.map((option) => (
     <button onClick={() => setCurrentMode(option)} disabled={(currentMode === option)}>{option}</button>
   ));
@@ -47,7 +47,6 @@ const App = () => {
     return (
       <div id="buttons">
         <div>{menuOptions}</div>
-        <div>Current Mode: {currentMode}</div>
         <div>
           View on
           <a href="https://github.com/tobiasfunction/color-grid">Github</a>.
