@@ -1,6 +1,6 @@
 import "./App.css";
 // import { Basic, Neon, Pastel, Tunnels } from "./Modes.js";
-import * as Tiles from "./Modes";
+import * as Tiles from "./Tiles";
 import React, { useLayoutEffect, useState } from "react";
 
 const modes = () => [
