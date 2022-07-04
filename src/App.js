@@ -1,5 +1,5 @@
 import "./App.css";
-import { Simple, Pastel } from "./Modes.js";
+import { Simple, Pastel, Tunnels } from "./Modes.js";
 import React, { useLayoutEffect, useState } from "react";
 
 const Tile = (props) => {
@@ -8,6 +8,8 @@ const Tile = (props) => {
     return <Simple row={props.row} column={props.column} />;
   if (mode === "Pastel")
     return <Pastel row={props.row} column={props.column} />;
+    if (mode === "Tunnels")
+    return <Tunnels row={props.row} column={props.column} />;
   else return <div>Oops</div>;
 };
 
@@ -44,11 +46,14 @@ const App = () => {
     const pastelBtn = (
       <button onClick={() => setCurrentMode("Pastel")}>Pastel</button>
     );
+    const tunnelsBtn = (
+      <button onClick={() => setCurrentMode("Tunnels")}>Tunnels</button>
+    );
 
     return (
       <div id="buttons">
         <div>
-          {simpleBtn} {pastelBtn}
+          {simpleBtn} {pastelBtn} {tunnelsBtn}
         </div>
         <div>Current Mode: {currentMode}</div>
         <div>
