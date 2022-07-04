@@ -8,7 +8,7 @@ const Tile = (props) => {
     return <Simple row={props.row} column={props.column} />;
   if (mode === "Pastel")
     return <Pastel row={props.row} column={props.column} />;
-    if (mode === "Tunnels")
+  if (mode === "Tunnels")
     return <Tunnels row={props.row} column={props.column} />;
   else return <div>Oops</div>;
 };
@@ -38,23 +38,15 @@ const Grid = (props) => {
 
 const App = () => {
   const [currentMode, setCurrentMode] = useState("Simple");
+  const modeList = ["Simple", "Pastel", "Tunnels"];
+  const menuOptions = modeList.map((option) => (
+    <button onClick={() => setCurrentMode(option)}>{option}</button>
+  ));
 
   const Menu = (props) => {
-    const simpleBtn = (
-      <button onClick={() => setCurrentMode("Simple")}>Simple</button>
-    );
-    const pastelBtn = (
-      <button onClick={() => setCurrentMode("Pastel")}>Pastel</button>
-    );
-    const tunnelsBtn = (
-      <button onClick={() => setCurrentMode("Tunnels")}>Tunnels</button>
-    );
-
     return (
       <div id="buttons">
-        <div>
-          {simpleBtn} {pastelBtn} {tunnelsBtn}
-        </div>
+        <div>{menuOptions}</div>
         <div>Current Mode: {currentMode}</div>
         <div>
           View on
