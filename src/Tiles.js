@@ -30,13 +30,16 @@ const Pastel = (props) => {
         backgroundColor: color,
         gridColumn: props.column,
         gridRow: props.row,
+        transition: "all 200ms"
       }}
       onMouseEnter={mouseEnter}
     />
   );
   function mouseEnter() {
-    const random = Math.floor(Math.random() * 360);
-    const color = `hsl(${random}, 100%, 80%)`;
+    const hue = Math.floor(Math.random() * 360);
+    const saturation = Math.floor(Math.random() * 60) + 40;
+    const lightness = Math.floor(Math.random() * 15) + 82;
+    const color = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
     setColor(color);
   }
 };
