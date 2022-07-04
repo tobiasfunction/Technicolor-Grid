@@ -40,7 +40,7 @@ const App = () => {
   const [currentMode, setCurrentMode] = useState("Simple");
   const modeList = ["Simple", "Pastel", "Tunnels"];
   const menuOptions = modeList.map((option) => (
-    <button onClick={() => setCurrentMode(option)}>{option}</button>
+    <button onClick={() => setCurrentMode(option)} disabled={(currentMode === option)}>{option}</button>
   ));
 
   const Menu = (props) => {
