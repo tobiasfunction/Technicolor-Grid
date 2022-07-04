@@ -78,7 +78,7 @@ const Tunnels = (props) => {
     margin += 10;
     side -= 20;
     alternator = alternator ? 0 : 1;
-    delay += 150;
+    delay += 300;
   }
 
   return (
@@ -95,9 +95,9 @@ const Tunnels = (props) => {
     </div>
   );
   function mouseEnter() {
-    const hue = Math.floor(Math.random() * 350);
-    const newColorOne = `hsl(${hue}, 90%, 60%)`;
-    const newColorTwo = `hsl(${(hue + 20)}, 90%, 60%)`;
+    const hue = Math.floor(Math.random() * 330);
+    const newColorOne = `hsl(${hue}, 100%, 60%)`;
+    const newColorTwo = `hsl(${hue + 20}, 100%, 60%)`;
     setHue(hue);
     setColorOne(newColorOne);
     setColorTwo(newColorTwo);
