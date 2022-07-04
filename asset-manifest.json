@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/color-grid/static/css/main.8fcbb8c2.css",
-    "main.js": "/color-grid/static/js/main.c9b43576.js",
+    "main.css": "/color-grid/static/css/main.22feddcc.css",
+    "main.js": "/color-grid/static/js/main.f5933ea8.js",
     "static/js/787.33c2c2b2.chunk.js": "/color-grid/static/js/787.33c2c2b2.chunk.js",
     "index.html": "/color-grid/index.html",
-    "main.8fcbb8c2.css.map": "/color-grid/static/css/main.8fcbb8c2.css.map",
-    "main.c9b43576.js.map": "/color-grid/static/js/main.c9b43576.js.map",
+    "main.22feddcc.css.map": "/color-grid/static/css/main.22feddcc.css.map",
+    "main.f5933ea8.js.map": "/color-grid/static/js/main.f5933ea8.js.map",
     "787.33c2c2b2.chunk.js.map": "/color-grid/static/js/787.33c2c2b2.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.8fcbb8c2.css",
-    "static/js/main.c9b43576.js"
+    "static/css/main.22feddcc.css",
+    "static/js/main.f5933ea8.js"
   ]
 }
