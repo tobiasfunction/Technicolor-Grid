@@ -43,8 +43,8 @@ const Pastel = (props) => {
 
 const Tunnels = (props) => {
   const [hue, setHue] = useState();
-  const [colorOne, setColorOne] = useState("#fff");
-  const [colorTwo, setColorTwo] = useState("#fff");
+  const [colorOne, setColorOne] = useState("#000");
+  const [colorTwo, setColorTwo] = useState("#000");
   const column = `${props.column} / ${props.column}`;
   const row = `${props.row} / ${props.row}`;
 
