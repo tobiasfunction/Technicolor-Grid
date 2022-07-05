@@ -59,7 +59,7 @@ const Neon = (props) => {
     borderWidth: "2px",
     boxSizing: "border-box",
     color: "#fff",
-    filter: active ? "blur(1px)" : "blur(0px)" ,
+    filter: active ? "blur(1px)" : "blur(0px)",
     height: "76px",
     margin: "12px",
     opacity: active ? "100%" : "0%",
@@ -73,7 +73,7 @@ const Neon = (props) => {
     borderStyle: "solid",
     borderWidth: "6px",
     boxSizing: "border-box",
-    filter: active ? "blur(1px)" : "blur(6px)" ,
+    filter: active ? "blur(1px)" : "blur(6px)",
     height: "80px",
     margin: "10px",
     opacity: active ? "100%" : "0%",
@@ -94,7 +94,7 @@ const Neon = (props) => {
       onMouseLeave={mouseLeave}
     >
       <div key={3} style={colorNeon} />
-      <div key={2} style={whiteNeon}/>
+      <div key={2} style={whiteNeon} />
     </div>
   );
 
@@ -108,7 +108,7 @@ const Neon = (props) => {
   }
   function mouseLeave() {
     setTimeout(() => {
-      setActive(0)
+      setActive(0);
     }, 1000);
   }
 };
