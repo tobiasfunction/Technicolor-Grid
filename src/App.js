@@ -6,8 +6,8 @@ import React, { useLayoutEffect, useState } from "react";
 const modes = () => [
   { name: "Classic", background: "#ccc", targetSize: 100, Grid: BasicGrid, Tile: Tiles.BasicTile },
   { name: "Pastel", background: "#fff", targetSize: 50, Grid: BasicGrid, Tile: Tiles.Pastel, gridStyle: {filter: "blur(1px)"} },
-  { name: "Tunnels", background: "#000", targetSize: 100, Grid: BasicGrid, Tile: Tiles.Tunnels },
-  { name: "Neon", background: "#000", targetSize: 100, Grid: BasicGrid, Tile: Tiles.Neon },
+  { name: "Tunnels", background: "#000", targetSize: 120, Grid: BasicGrid, Tile: Tiles.Tunnels, gridStyle:{} },
+  { name: "Neon", background: "#000", targetSize: 100, Grid: BasicGrid, Tile: Tiles.Neon, gridStyle:{} },
 ];
 
 const BasicGrid = (props) => {
