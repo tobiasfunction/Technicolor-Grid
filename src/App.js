@@ -70,18 +70,22 @@ const App = () => {
         {menuOptions}
         <button
           style={{
-            backgroundColor: "#eee",
-            borderWidth: "1px",
+            // borderWidth: "0px",
             padding: "0",
             lineHeight: "0",
             borderRadius: "50%",
+            borderStyle: "default",
           }}
           title="View code on GitHub"
-          onClick={() => window.open("https://github.com/tobiasfunction/color-grid")}
+          onClick={() =>
+            window.open(
+              "https://github.com/tobiasfunction/color-grid",
+              "_blank"
+            )
+          }
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            href="http://google.com"
             width="2.5em"
             height="2.5em"
             viewBox="0 0 24 24"
