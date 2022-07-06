@@ -1,10 +1,17 @@
 import "./App.css";
-// import { Basic, Neon, Pastel, Tunnels } from "./Modes.js";
 import * as Grids from "./Grids";
 import * as Tiles from "./Tiles";
-import React, { useLayoutEffect, useState } from "react";
+import React, { useState } from "react";
 
 const modes = () => [
+  // "Stratchpad" mode for testing ideas and isolating problems
+  // {
+  //   name: "Scratch",
+  //   background: "#eee",
+  //   targetSize: 100,
+  //   Grid: Grids.Scratch,
+  //   Tile: Tiles.Scratch,
+  // },
   {
     name: "Classic",
     background: "#ccc",
@@ -13,7 +20,7 @@ const modes = () => [
     Tile: Tiles.BasicTile,
   },
   {
-    name: "Pastel",
+    name: "Gems",
     background: "#fff",
     targetSize: 50,
     Grid: Grids.Stacked,
@@ -36,7 +43,15 @@ const modes = () => [
     Tile: Tiles.Neon,
     gridStyle: {},
   },
+  {
+    name: "Soft Plaid",
+    targetSize: 60,
+    Grid: Grids.Scratch,
+    Tile: Tiles.SoftPlaid
+  }
 ];
+
+
 
 const App = () => {
   const [currentMode, setCurrentMode] = useState(modes()[0]);
@@ -62,8 +77,6 @@ const App = () => {
       </div>
     );
   };
-  //   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-  // grid-template-rows: repeat(auto-fit, minmax(100px, 1fr));
   return (
     <div className="App" style={{ backgroundColor: currentMode.background }}>
       <Menu />

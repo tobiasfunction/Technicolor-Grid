@@ -1,5 +1,28 @@
 import React, { useState } from "react";
-import { isPropertyAccessChain } from "typescript";
+
+const Scratch = (props) => {
+  const [color, setColor] = useState();
+
+  return (
+    <div
+      className="tile"
+      style={{
+        backgroundColor: color,
+        opacity: "100%",
+        gridColumn: props.column,
+        gridRow: props.row,
+        width: props.size * 1.3 + "px",
+        height: props.size * 1.3 + "px",
+        mixBlendMode: "multiply",
+      }}
+      onMouseEnter={mouseEnter}
+    />
+  );
+  function mouseEnter() {
+    const hue = Math.floor(Math.random() * 360);
+    setColor(`hsl(${hue}, 60%, 85%)`);
+  }
+};
 
 const BasicTile = (props) => {
   const [color, setColor] = useState();
@@ -175,4 +198,32 @@ const Tunnels = (props) => {
   }
 };
 
-export { BasicTile, Neon, Pastel, Tunnels };
+const SoftPlaid = (props) => {
+  const [color, setColor] = useState(randomColor());
+
+  return (
+    <div
+      className="tile"
+      style={{
+        backgroundColor: color,
+        opacity: "100%",
+        gridColumn: props.column,
+        gridRow: props.row,
+        width: props.size * 1.3 + "px",
+        height: props.size * 1.3 + "px",
+        mixBlendMode: "multiply",
+      }}
+      onMouseEnter={mouseEnter}
+    />
+  );
+  function mouseEnter() {
+    setColor(randomColor());
+  }
+
+  function randomColor() {
+    const hue = Math.floor(Math.random() * 360);
+    return `hsl(${hue}, 60%, 85%)`;
+  }
+};
+
+export { Scratch, BasicTile, Neon, Pastel, Tunnels, SoftPlaid };
