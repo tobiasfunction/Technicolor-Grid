@@ -8,12 +8,12 @@ const Scratch = (props) => {
       className="tile"
       style={{
         backgroundColor: color,
-        opacity: "100%",
         gridColumn: props.column,
         gridRow: props.row,
-        width: props.size * 1.3 + "px",
         height: props.size * 1.3 + "px",
         mixBlendMode: "multiply",
+        opacity: "100%",
+        width: props.size * 1.3 + "px",
       }}
       onMouseEnter={mouseEnter}
     />
@@ -54,7 +54,7 @@ const Pastel = (props) => {
         backgroundColor: color,
         gridColumn: props.column,
         gridRow: props.row,
-        transition: "all 500ms",
+        transition: "color 500ms",
       }}
       onMouseEnter={mouseEnter}
     />
@@ -63,8 +63,8 @@ const Pastel = (props) => {
     const hue = Math.floor(Math.random() * 360);
     const saturation = Math.floor(Math.random() * 25) + 70;
     const lightness = Math.floor(Math.random() * 15) + 83;
-    const color = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
-    setColor(color);
+    const newColor = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+    setColor(newColor);
   }
 };
 
@@ -72,8 +72,6 @@ const Neon = (props) => {
   const [active, setActive] = useState();
   const [colorOne, setColorOne] = useState();
   const [colorTwo, setColorTwo] = useState();
-  const column = `${props.column} / ${props.column}`;
-  const row = `${props.row} / ${props.row}`;
 
   let whiteNeon = {
     borderColor: "#fff",
@@ -83,10 +81,10 @@ const Neon = (props) => {
     boxSizing: "border-box",
     color: "#fff",
     filter: active ? "blur(1px)" : "blur(0px)",
+    gridColumn: props.column,
+    gridRow: props.row,
     height: "76px",
-    margin: "12px",
     opacity: active ? "100%" : "0%",
-    position: "absolute",
     transition: "all 2s",
     width: "76px",
   };
@@ -97,28 +95,26 @@ const Neon = (props) => {
     borderWidth: "6px",
     boxSizing: "border-box",
     filter: active ? "blur(1px)" : "blur(6px)",
+    gridColumn: props.column,
+    gridRow: props.row,
     height: "80px",
-    margin: "10px",
     opacity: active ? "100%" : "0%",
-    position: "absolute",
     transition: "all 5s, opacity 2s, filter 2s ease-out, border-color 1s",
     width: "80px",
   };
 
   return (
-    <div
-      key={1}
-      className="tile"
-      style={{
-        gridColumn: column,
-        gridRow: row,
-      }}
-      onMouseEnter={mouseEnter}
-      onMouseLeave={mouseLeave}
-    >
-      <div key={3} style={colorNeon} />
-      <div key={2} style={whiteNeon} />
-    </div>
+    //
+    <>
+      <div key={1} className="tile" style={colorNeon} />
+      <div
+        key={2}
+        className="tile"
+        style={whiteNeon}
+        onMouseEnter={mouseEnter}
+        onMouseLeave={mouseLeave}
+      />
+    </>
   );
 
   function mouseEnter() {
@@ -139,55 +135,54 @@ const Neon = (props) => {
 const Tunnels = (props) => {
   const [colorOne, setColorOne] = useState("#222");
   const [colorTwo, setColorTwo] = useState("#222");
-  const column = `${props.column} / ${props.column}`;
-  const row = `${props.row} / ${props.row}`;
 
   const tiles = [];
 
   let key = 1;
-  let side = props.size;
-  let sideIncrement = Math.ceil(side / 5);
-  let margin = 0;
-  let marginIncrement = Math.ceil(sideIncrement / 2);
+  let size = 100;
   let delay = 0;
   let alternator = true;
+  let zIndex = 0;
 
-  while (side > 0) {
+  while (size > 0) {
     tiles.push(
       <div
+        className="tile"
         style={{
           backgroundColor: alternator ? colorTwo : colorOne,
-          // borderRadius: "8px",
           boxShadow: "2px 2px 2px #000 inset",
-          height: side + "px",
-          margin: margin + "px",
+          gridColumn: props.column,
+          gridRow: props.row,
+          height: size + "%",
           opacity: "30%",
-          position: "absolute",
           transition: "all 1s",
           transitionDelay: delay + "ms",
-          width: side + "px",
+          width: size + "%",
+          zIndex: zIndex,
         }}
         key={key}
       />
     );
-    margin += marginIncrement;
-    side -= sideIncrement;
-    alternator = !alternator;
-    delay += 150;
     key++;
+    size -= 25;
+    delay += 150;
+    alternator = !alternator;
+    zIndex += 10;
   }
 
   return (
-    <div
-      className="tile"
-      style={{
-        gridColumn: column,
-        gridRow: row,
-      }}
-      onMouseEnter={mouseEnter}
-    >
+    <>
       {tiles}
-    </div>
+      <div
+        className="tile"
+        style={{
+          gridColumn: props.column,
+          gridRow: props.row,
+          zIndex: 200,
+        }}
+        onMouseEnter={mouseEnter}
+      />
+    </>
   );
   function mouseEnter() {
     const hue = Math.floor(Math.random() * 330);
@@ -206,12 +201,13 @@ const SoftPlaid = (props) => {
       className="tile"
       style={{
         backgroundColor: color,
-        opacity: "100%",
         gridColumn: props.column,
         gridRow: props.row,
-        width: props.size * 1.3 + "px",
-        height: props.size * 1.3 + "px",
+        height: "135%",
         mixBlendMode: "multiply",
+        opacity: "100%",
+        width: "135%",
+        transition: "all 100ms",
       }}
       onMouseEnter={mouseEnter}
     />

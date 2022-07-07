@@ -46,7 +46,7 @@ const modes = () => [
   {
     name: "Soft Plaid",
     targetSize: 60,
-    Grid: Grids.Scratch,
+    Grid: Grids.Stacked,
     Tile: Tiles.SoftPlaid,
   },
 ];

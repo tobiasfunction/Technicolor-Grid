@@ -51,8 +51,8 @@ const Stacked = (props) => {
         <props.mode.Tile
           key={i + "/" + j}
           value={i + "/" + j}
-          row={i}
-          column={j}
+          row={i + " / " + i}
+          column={j + " / " + j}
           size={tileSize}
           mode={props.mode}
         />
@@ -65,6 +65,7 @@ const Stacked = (props) => {
       style={{
         gridTemplateColumns: `repeat(auto-fit, minmax(${props.mode.targetSize}px, 1fr))`,
         gridTemplateRows: `repeat(auto-fit, minmax(${props.mode.targetSize}px, 1fr))`,
+        height: "100vh",
         ...props.mode.gridStyle,
       }}
     >
