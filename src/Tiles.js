@@ -2,25 +2,33 @@ import React, { useState } from "react";
 
 const Scratch = (props) => {
   const [color, setColor] = useState();
+  const size = "100%";
 
   return (
     <div
       className="tile"
       style={{
         backgroundColor: color,
+        borderTop: "8px solid rgba( 255, 255, 255, .5 )",
+        borderLeft: "8px solid rgba( 255, 255, 255, .6 )",
+        borderBottom: "8px solid rgba( 0, 0, 0, .5 )",
+        borderRight: "8px solid rgba( 0, 0, 0, .6 )",
         gridColumn: props.column,
         gridRow: props.row,
-        height: props.size * 1.3 + "px",
-        mixBlendMode: "multiply",
+        height: size,
         opacity: "100%",
-        width: props.size * 1.3 + "px",
+        width: size,
+        overflow: "hidden",
+        // transition: "all 2s",
       }}
       onMouseEnter={mouseEnter}
     />
   );
   function mouseEnter() {
-    const hue = Math.floor(Math.random() * 360);
-    setColor(`hsl(${hue}, 60%, 85%)`);
+    const h = Math.floor(Math.random() * 360);
+    const s = Math.floor(Math.random() * 20);
+    const l = Math.floor(Math.random() * 50) + 40;
+    setColor(`hsl(${h}, ${s}%, ${l}%)`);
   }
 };
 
@@ -222,4 +230,33 @@ const SoftPlaid = (props) => {
   }
 };
 
-export { Scratch, BasicTile, Neon, Pastel, Tunnels, SoftPlaid };
+const Spectrum = (props) => {
+  const [hue, setHue] = useState(props.counter);
+  const size = "100%";
+  let i = 10;
+
+  return (
+    <div
+      className="tile"
+      style={{
+        backgroundColor: `hsl(${hue}, 70%, 60%)`,
+        borderBottom: "6px solid rgba( 0, 0, 0, .3 )",
+        borderLeft: "6px solid rgba( 255, 255, 255, .4 )",
+        borderRight: "6px solid rgba( 0, 0, 0, .4 )",
+        borderTop: "6px solid rgba( 255, 255, 255, .3 )",
+        gridColumn: props.column,
+        gridRow: props.row,
+        height: size,
+        opacity: "100%",
+      }}
+      onMouseEnter={mouseEnter}
+    />
+  );
+  function mouseEnter() {
+    let newHue = hue + 10;
+    newHue = newHue < 360 ? newHue : newHue - 360;
+    setHue(newHue);
+  }
+};
+
+export { Scratch, BasicTile, Neon, Pastel, Tunnels, SoftPlaid, Spectrum };

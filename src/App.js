@@ -9,7 +9,7 @@ const modes = () => [
   //   name: "Scratch",
   //   background: "#eee",
   //   targetSize: 100,
-  //   Grid: Grids.Scratch,
+  //   Grid: Grids.Subway,
   //   Tile: Tiles.Scratch,
   // },
   {
@@ -48,6 +48,13 @@ const modes = () => [
     targetSize: 60,
     Grid: Grids.Stacked,
     Tile: Tiles.SoftPlaid,
+  },
+  {
+    name: "Spectrum",
+    background: "#000",
+    targetSize: 60,
+    Grid: Grids.Subway,
+    Tile: Tiles.Spectrum,
   },
 ];
 

@@ -42,7 +42,7 @@ button {
 }
 
 .tile {
-  aspect-ratio: 1/1;
+  /* aspect-ratio: 1/1; */
   box-sizing: border-box;
   height: 100%;
   place-self: center;
