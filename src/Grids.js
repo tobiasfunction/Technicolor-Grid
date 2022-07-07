@@ -1,4 +1,4 @@
-import React, { useState, useLayoutEffect } from "react";
+import React, { useState, useLayoutEffect, Suspense } from "react";
 
 const Scratch = (props) => {
   const [windowWidth, windowHeight] = useWindowSize();
@@ -8,10 +8,13 @@ const Scratch = (props) => {
   const targetRowCount = Math.ceil(windowHeight / tileSize);
   const tiles = [];
 
+  const Tile = React.lazy(props.mode.tile);
+
   for (let i = 1; i <= targetRowCount; i++) {
     for (let j = 1; j <= tilesPerRow; j++) {
       tiles.push(
-        <props.mode.Tile
+        <Suspense fallback={<div>...</div>}>
+        <Tile
           key={i + "/" + j}
           value={i + "/" + j}
           row={i + " / " + i}
@@ -19,6 +22,7 @@ const Scratch = (props) => {
           size={tileSize}
           mode={props.mode}
         />
+        </Suspense>
       );
     }
   }

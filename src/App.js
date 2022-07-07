@@ -1,17 +1,12 @@
 import "./App.css";
 import * as Grids from "./Grids";
 import * as Tiles from "./Tiles";
-import React, { useState } from "react";
+import React, { useState, Suspense } from "react";
+// import { Scratch } from "./Scratch";
+
 
 const modes = () => [
-  // "Stratchpad" mode for testing ideas and isolating problems
-  // {
-  //   name: "Scratch",
-  //   background: "#eee",
-  //   targetSize: 100,
-  //   Grid: Grids.Subway,
-  //   Tile: Tiles.Scratch,
-  // },
+
   {
     name: "Classic",
     background: "#ccc",
@@ -19,6 +14,7 @@ const modes = () => [
     Grid: Grids.Stacked,
     Tile: Tiles.BasicTile,
   },
+
   {
     name: "Gems",
     background: "#fff",
@@ -56,7 +52,17 @@ const modes = () => [
     Grid: Grids.Subway,
     Tile: Tiles.Spectrum,
   },
+  {
+    // "Stratchpad" mode for testing ideas and isolating problems
+    name: "Scratchpad",
+    background: "#eee",
+    targetSize: 100,
+    Grid: Grids.Scratch,
+    tile: () => import("./Scratch"),
+  },
 ];
+
+// const Scratch = React.lazy(() => import("./Scratch"));
 
 const App = () => {
   const [currentMode, setCurrentMode] = useState(modes()[0]);
@@ -103,9 +109,13 @@ const App = () => {
             ></path>
           </svg>
         </button>
+        {/* <Suspense fallback={<div>Loading...</div>}>
+          <Scratch />
+        </Suspense> */}
       </div>
     );
   };
+
   return (
     <div className="App" style={{ backgroundColor: currentMode.background }}>
       <Menu />
