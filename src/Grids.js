@@ -9,21 +9,23 @@ const Scratch = (props) => {
   const tiles = [];
 
   const Tile = React.lazy(props.mode.tile);
-
+  let counter = 0;
   for (let i = 1; i <= targetRowCount; i++) {
     for (let j = 1; j <= tilesPerRow; j++) {
       tiles.push(
         <Suspense fallback={<div>...</div>}>
-        <Tile
-          key={i + "/" + j}
-          value={i + "/" + j}
-          row={i + " / " + i}
-          column={j + " / " + j}
-          size={tileSize}
-          mode={props.mode}
-        />
+          <Tile
+            key={i + "/" + j}
+            value={i + "/" + j}
+            row={i + " / " + i}
+            column={j + " / " + j}
+            counter={counter}
+            size={tileSize}
+            mode={props.mode}
+          />
         </Suspense>
       );
+      counter++;
     }
   }
   return (
@@ -48,19 +50,24 @@ const Stacked = (props) => {
   const tileSize = Math.floor(windowWidth / tilesPerRow);
   const targetRowCount = Math.ceil(windowHeight / tileSize);
   const tiles = [];
+  const Tile = React.lazy(props.mode.Tile);
+
+  let counter = 1;
 
   for (let i = 1; i <= targetRowCount; i++) {
     for (let j = 1; j <= tilesPerRow; j++) {
       tiles.push(
-        <props.mode.Tile
+        <Tile
           key={i + "/" + j}
           value={i + "/" + j}
           row={i + " / " + i}
           column={j + " / " + j}
           size={tileSize}
           mode={props.mode}
+          counter={counter}
         />
       );
+      counter ++;
     }
   }
   return (
@@ -73,7 +80,7 @@ const Stacked = (props) => {
         ...props.mode.gridStyle,
       }}
     >
-      {tiles}
+      <Suspense fallback={<div>...</div>}>{tiles}</Suspense>
     </div>
   );
 };
@@ -87,6 +94,7 @@ const Subway = (props) => {
   const rowCount = targetRowCount;
   const tiles = [];
   let counter = 1;
+  const Tile = React.lazy(props.mode.Tile);
 
   for (let i = 1; i <= rowCount; i++) {
     let tilesThisRow =
@@ -96,7 +104,7 @@ const Subway = (props) => {
         i % 2 ? `${j * 2 - 1} / ${j * 2 + 1}` : `${j * 2} / ${j * 2 + 2}`;
       let gridRow = `${i * 2 - 1} / ${i * 2 + 1}`;
       tiles.push(
-        <props.mode.Tile
+        <Tile
           column={gridColumn}
           row={`${i} / ${i}`}
           key={i + "/" + j}
@@ -107,7 +115,7 @@ const Subway = (props) => {
         />
       );
       counter++;
-      if (counter > 360) counter -= 360
+      if (counter > 360) counter -= 360;
     }
   }
   return (
@@ -124,7 +132,7 @@ const Subway = (props) => {
         ...props.mode.gridStyle,
       }}
     >
-      {tiles}
+       <Suspense fallback={<div>...</div>}>{tiles}</Suspense>
     </div>
   );
 };

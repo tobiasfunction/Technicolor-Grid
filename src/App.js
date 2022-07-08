@@ -4,15 +4,13 @@ import * as Tiles from "./Tiles";
 import React, { useState, Suspense } from "react";
 // import { Scratch } from "./Scratch";
 
-
 const modes = () => [
-
   {
     name: "Classic",
     background: "#ccc",
     targetSize: 100,
     Grid: Grids.Stacked,
-    Tile: Tiles.BasicTile,
+    Tile: () => import("./tiles/classic"),
   },
 
   {
@@ -20,7 +18,7 @@ const modes = () => [
     background: "#fff",
     targetSize: 50,
     Grid: Grids.Stacked,
-    Tile: Tiles.Pastel,
+    Tile: () => import("./tiles/gems"),
     gridStyle: { filter: "blur(1px)" },
   },
   {
@@ -28,7 +26,7 @@ const modes = () => [
     background: "#000",
     targetSize: 120,
     Grid: Grids.Stacked,
-    Tile: Tiles.Tunnels,
+    Tile: () => import("./tiles/tunnels"),
     gridStyle: {},
   },
   {
@@ -36,29 +34,29 @@ const modes = () => [
     background: "#000",
     targetSize: 100,
     Grid: Grids.Stacked,
-    Tile: Tiles.Neon,
+    Tile: () => import("./tiles/neon"),
     gridStyle: {},
   },
   {
     name: "Soft Plaid",
     targetSize: 60,
     Grid: Grids.Stacked,
-    Tile: Tiles.SoftPlaid,
+    Tile: () => import("./tiles/softPlaid"),
   },
   {
     name: "Spectrum",
     background: "#000",
     targetSize: 60,
     Grid: Grids.Subway,
-    Tile: Tiles.Spectrum,
+    Tile: () => import("./tiles/spectrum"),
   },
   {
     // "Stratchpad" mode for testing ideas and isolating problems
     name: "Scratchpad",
-    background: "#eee",
-    targetSize: 100,
+    background: "#000",
+    targetSize: 80,
     Grid: Grids.Scratch,
-    tile: () => import("./Scratch"),
+    tile: () => import("./tiles/scratch"),
   },
 ];
 
