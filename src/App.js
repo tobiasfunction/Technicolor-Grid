@@ -6,9 +6,17 @@ import React, { useState, Suspense } from "react";
 
 const modes = () => [
   {
+    // "Stratchpad" mode for testing ideas and isolating problems
+    name: "Scratchpad",
+    background: "#000",
+    targetSize: 80,
+    Grid: Grids.Scratch,
+    tile: () => import("./tiles/classic"),
+  },
+{
     name: "Classic",
     background: "#ccc",
-    targetSize: 100,
+    targetSize: 80,
     Grid: Grids.Stacked,
     Tile: () => import("./tiles/classic"),
   },
@@ -51,13 +59,19 @@ const modes = () => [
     Tile: () => import("./tiles/spectrum"),
   },
   {
-    // "Stratchpad" mode for testing ideas and isolating problems
-    name: "Scratchpad",
+    name: "Mood Rings",
     background: "#000",
-    targetSize: 80,
-    Grid: Grids.Scratch,
-    tile: () => import("./tiles/scratch"),
+    targetSize: 100,
+    Grid: Grids.Stacked,
+    Tile: () => import("./tiles/scratch"),
   },
+  // {
+  //   name: "Mermaid",
+  //   background: "#eee",
+  //   targetSize: 40,
+  //   Grid: Grids.Subway,
+  //   Tile: () => import("./tiles/mermaid"),
+  // },
 ];
 
 // const Scratch = React.lazy(() => import("./Scratch"));
@@ -81,7 +95,6 @@ const App = () => {
         {menuOptions}
         <button
           style={{
-            // borderWidth: "0px",
             padding: "0",
             lineHeight: "0",
             borderRadius: "50%",
@@ -107,9 +120,6 @@ const App = () => {
             ></path>
           </svg>
         </button>
-        {/* <Suspense fallback={<div>Loading...</div>}>
-          <Scratch />
-        </Suspense> */}
       </div>
     );
   };
@@ -117,7 +127,10 @@ const App = () => {
   return (
     <div className="App" style={{ backgroundColor: currentMode.background }}>
       <Menu />
-      <currentMode.Grid mode={currentMode} />
+
+      <currentMode.Grid
+      mode={currentMode} />
+
     </div>
   );
 };

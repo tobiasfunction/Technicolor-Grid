@@ -1,4 +1,4 @@
-import React, { useState, useLayoutEffect, Suspense } from "react";
+import React, { useState, useLayoutEffect, useEffect, Suspense, useTransition } from "react";
 
 const Scratch = (props) => {
   const [windowWidth, windowHeight] = useWindowSize();
@@ -7,15 +7,16 @@ const Scratch = (props) => {
   const tileSize = Math.floor(windowWidth / tilesPerRow);
   const targetRowCount = Math.ceil(windowHeight / tileSize);
   const tiles = [];
-
   const Tile = React.lazy(props.mode.tile);
-  let counter = 0;
+
+  let counter = 1;
+
   for (let i = 1; i <= targetRowCount; i++) {
     for (let j = 1; j <= tilesPerRow; j++) {
       tiles.push(
-        <Suspense fallback={<div>...</div>}>
+        <Suspense
+        key={i + "/" + j}>
           <Tile
-            key={i + "/" + j}
             value={i + "/" + j}
             row={i + " / " + i}
             column={j + " / " + j}
@@ -57,6 +58,7 @@ const Stacked = (props) => {
   for (let i = 1; i <= targetRowCount; i++) {
     for (let j = 1; j <= tilesPerRow; j++) {
       tiles.push(
+        <Suspense>
         <Tile
           key={i + "/" + j}
           value={i + "/" + j}
@@ -66,8 +68,9 @@ const Stacked = (props) => {
           mode={props.mode}
           counter={counter}
         />
+      </Suspense>
       );
-      counter ++;
+      counter++;
     }
   }
   return (
@@ -80,7 +83,7 @@ const Stacked = (props) => {
         ...props.mode.gridStyle,
       }}
     >
-      <Suspense fallback={<div>...</div>}>{tiles}</Suspense>
+      {tiles}
     </div>
   );
 };
@@ -104,15 +107,17 @@ const Subway = (props) => {
         i % 2 ? `${j * 2 - 1} / ${j * 2 + 1}` : `${j * 2} / ${j * 2 + 2}`;
       let gridRow = `${i * 2 - 1} / ${i * 2 + 1}`;
       tiles.push(
+        <Suspense key={i + "/" + j}>
         <Tile
           column={gridColumn}
           row={`${i} / ${i}`}
-          key={i + "/" + j}
+          
           mode={props.mode}
           size={tileSize}
           value={i + "/" + j}
           counter={counter}
         />
+        </Suspense>
       );
       counter++;
       if (counter > 360) counter -= 360;
@@ -132,16 +137,18 @@ const Subway = (props) => {
         ...props.mode.gridStyle,
       }}
     >
-       <Suspense fallback={<div>...</div>}>{tiles}</Suspense>
+      {tiles}
     </div>
   );
 };
 
 function useWindowSize() {
-  const [size, setSize] = useState([0, 0]);
-  useLayoutEffect(() => {
+  const [size, setSize] = useState([0,0]);
+  const [isPending, startTransition] = useTransition();
+  useEffect(() => {
     function updateSize() {
-      setSize([window.innerWidth, window.innerHeight]);
+      startTransition(() => {
+      setSize([window.innerWidth, window.innerHeight]); })
     }
     window.addEventListener("resize", updateSize);
     updateSize();
