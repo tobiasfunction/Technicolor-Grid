@@ -4,7 +4,7 @@ export default function Subway(props) {
 
   const tilesPerRow = Math.floor(props.windowWidth / props.mode.targetSize);
   const tileSize = Math.floor(props.windowWidth / tilesPerRow);
-  const targetRowCount = Math.ceil(props.windowHeight / tileSize);
+  const targetRowCount = Math.floor(props.windowHeight / tileSize);
   const rowCount = targetRowCount;
   const tiles = [];
   let counter = 1;
