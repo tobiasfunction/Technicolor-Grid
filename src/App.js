@@ -1,23 +1,24 @@
 import "./App.css";
-import * as Grids from "./Grids";
-import * as Tiles from "./Tiles";
-import React, { useState, Suspense } from "react";
-// import { Scratch } from "./Scratch";
+import React, { useState, useTransition, useLayoutEffect } from "react";
+
+import ScratchGrid from "./grids/scratchGrid";
+import Stacked from "./grids/stacked";
+import Subway from "./grids/subway";
 
 const modes = () => [
   {
     // "Stratchpad" mode for testing ideas and isolating problems
     name: "Scratchpad",
-    background: "#000",
+    background: "#ccc",
     targetSize: 80,
-    Grid: Grids.Scratch,
-    tile: () => import("./tiles/classic"),
+    Grid: ScratchGrid,
+    Tile: () => import("./tiles/gems"),
   },
-{
+  {
     name: "Classic",
     background: "#ccc",
     targetSize: 80,
-    Grid: Grids.Stacked,
+    Grid: Stacked,
     Tile: () => import("./tiles/classic"),
   },
 
@@ -25,7 +26,7 @@ const modes = () => [
     name: "Gems",
     background: "#fff",
     targetSize: 50,
-    Grid: Grids.Stacked,
+    Grid: Stacked,
     Tile: () => import("./tiles/gems"),
     gridStyle: { filter: "blur(1px)" },
   },
@@ -33,7 +34,7 @@ const modes = () => [
     name: "Tunnels",
     background: "#000",
     targetSize: 120,
-    Grid: Grids.Stacked,
+    Grid: Stacked,
     Tile: () => import("./tiles/tunnels"),
     gridStyle: {},
   },
@@ -41,29 +42,29 @@ const modes = () => [
     name: "Neon",
     background: "#000",
     targetSize: 100,
-    Grid: Grids.Stacked,
+    Grid: Stacked,
     Tile: () => import("./tiles/neon"),
     gridStyle: {},
   },
   {
     name: "Soft Plaid",
     targetSize: 60,
-    Grid: Grids.Stacked,
+    Grid: Stacked,
     Tile: () => import("./tiles/softPlaid"),
   },
   {
     name: "Spectrum",
     background: "#000",
     targetSize: 60,
-    Grid: Grids.Subway,
+    Grid: Subway,
     Tile: () => import("./tiles/spectrum"),
   },
   {
     name: "Mood Rings",
     background: "#000",
     targetSize: 100,
-    Grid: Grids.Stacked,
-    Tile: () => import("./tiles/scratch"),
+    Grid: Stacked,
+    Tile: () => import("./tiles/moodRings"),
   },
   // {
   //   name: "Mermaid",
@@ -74,11 +75,9 @@ const modes = () => [
   // },
 ];
 
-// const Scratch = React.lazy(() => import("./Scratch"));
-
 const App = () => {
-  const [currentMode, setCurrentMode] = useState(modes()[0]);
   const modeList = modes();
+  const [currentMode, setCurrentMode] = useState(modeList[0]);
   const menuOptions = modeList.map((mode) => (
     <button
       onClick={() => setCurrentMode(mode)}
@@ -124,15 +123,37 @@ const App = () => {
     );
   };
 
+  const [windowWidth, windowHeight] = useWindowDimension();
+
   return (
     <div className="App" style={{ backgroundColor: currentMode.background }}>
       <Menu />
-
       <currentMode.Grid
-      mode={currentMode} />
-
+        mode={currentMode}
+        windowWidth={windowWidth}
+        windowHeight={windowHeight}
+      />
     </div>
   );
 };
+
+// https://stackoverflow.com/a/63010184
+function useWindowDimension() {
+  const [isPending, startTransition] = useTransition();
+  const [dimension, setDimension] = useState([
+    window.innerWidth,
+    window.innerHeight,
+  ]);
+  useLayoutEffect(() => {
+    const ResizeHandler = () =>
+      startTransition(() =>
+        setDimension([window.innerWidth, window.innerHeight])
+      );
+
+    window.addEventListener("resize", ResizeHandler);
+    return () => window.removeEventListener("resize", ResizeHandler);
+  }, []); // Note this empty array. this effect should run only on mount and unmount
+  return dimension;
+}
 
 export default App;

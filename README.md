@@ -9,8 +9,9 @@ You can play with it [here](https://tobiasfunction.github.io/color-grid/)!
 - Have modes handled by [context](https://reactjs.org/docs/context.html) instead of props.
 - Allow use of URL parameters to share or bookmark a specific mode.
     - Have "Hidden" modes only accessible via URL parameter.
-- Add mode Grid layout/positioning options.
-- Add `touch` events in addition to `mouse` events.
+- Add more Grid layout/positioning options.
+- Lift `mouse` events up into `App`.
+    - Add `touch` events in addition to `mouse` events.
 - Make menu collapsible.
     - Add a "Random" button.
     - Add "Info."
