@@ -1,29 +1,30 @@
 import "./App.css";
-import React, { useState, useTransition, useLayoutEffect } from "react";
+import React, { useState, useTransition, useEffect, useLayoutEffect } from "react";
 
 import ScratchGrid from "./grids/scratchGrid";
 import Stacked from "./grids/stacked";
 import Subway from "./grids/subway";
 
 const modes = () => [
-  {
-    // "Stratchpad" mode for testing ideas and isolating problems
-    name: "Scratchpad",
-    background: "#ccc",
-    targetSize: 80,
-    Grid: ScratchGrid,
-    Tile: () => import("./tiles/gems"),
-  },
+  // {
+  //   // "Stratchpad" mode for testing ideas and isolating problems
+  //   name: "Scratchpad",
+  //   background: "#ccc",
+  //   targetSize: 80,
+  //   Grid: ScratchGrid,
+  //   Tile: () => import("./tiles/gems"),
+  // },
   {
     name: "Classic",
+    alias: "classic",
     background: "#ccc",
     targetSize: 80,
     Grid: Stacked,
     Tile: () => import("./tiles/classic"),
   },
-
   {
     name: "Gems",
+    alias: "gems",
     background: "#fff",
     targetSize: 50,
     Grid: Stacked,
@@ -32,6 +33,7 @@ const modes = () => [
   },
   {
     name: "Tunnels",
+    alias: "tunnels",
     background: "#000",
     targetSize: 120,
     Grid: Stacked,
@@ -40,6 +42,7 @@ const modes = () => [
   },
   {
     name: "Neon",
+    alias: "neon",
     background: "#000",
     targetSize: 100,
     Grid: Stacked,
@@ -48,12 +51,14 @@ const modes = () => [
   },
   {
     name: "Soft Plaid",
+    alias: "soft-plaid",
     targetSize: 60,
     Grid: Stacked,
     Tile: () => import("./tiles/softPlaid"),
   },
   {
     name: "Spectrum",
+    alias: "spectrum",
     background: "#000",
     targetSize: 60,
     Grid: Subway,
@@ -61,6 +66,7 @@ const modes = () => [
   },
   {
     name: "Mood Rings",
+    alias: "mood-rings",
     background: "#000",
     targetSize: 100,
     Grid: Stacked,
@@ -77,7 +83,19 @@ const modes = () => [
 
 const App = () => {
   const modeList = modes();
+  
   const [currentMode, setCurrentMode] = useState(modeList[0]);
+  // window.history.replaceState({}, '', `${window.location.pathname}?${queryParams}`);
+  useEffect(() => {
+    // Handle mode via URL parameters
+  const queryParams = new URLSearchParams(window.location.search);
+
+  const queryMode = queryParams.get("mode");
+  console.log(queryMode)
+  if (queryMode) setCurrentMode(modeList.find((e) => e.alias === queryMode));
+
+  }, [])
+
   const menuOptions = modeList.map((mode) => (
     <button
       onClick={() => setCurrentMode(mode)}
