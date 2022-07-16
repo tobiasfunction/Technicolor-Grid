@@ -17,11 +17,16 @@ const App = () => {
 
   const setAlias = (alias) => {
     const newMode = modes.find((e) => e.alias === alias);
-    if (newMode) setMode(newMode);
-    else console.warn(alias + " is not a valid mode")
+    if (newMode) {
+      setMode(newMode);
+      window.history.replaceState(
+        {},
+        "",
+        `${window.location.pathname}?mode=${alias}`
+      );
+    } else console.warn(alias + " is not a valid mode");
   };
 
-  // window.history.replaceState({}, '', `${window.location.pathname}?${queryParams}`);
   useEffect(() => {
     // Handle mode via URL parameters
     const queryParams = new URLSearchParams(window.location.search);
