@@ -1,108 +1,43 @@
 import "./App.css";
-import React, { useState, useTransition, useEffect, useLayoutEffect } from "react";
+import React, {
+  useContext,
+  useState,
+  useTransition,
+  useEffect,
+  useLayoutEffect,
+} from "react";
 
 import ScratchGrid from "./grids/scratchGrid";
 import Stacked from "./grids/stacked";
 import Subway from "./grids/subway";
-
-const modes = () => [
-  // {
-  //   // "Stratchpad" mode for testing ideas and isolating problems
-  //   name: "Scratchpad",
-  //   background: "#ccc",
-  //   targetSize: 80,
-  //   Grid: ScratchGrid,
-  //   Tile: () => import("./tiles/gems"),
-  // },
-  {
-    name: "Classic",
-    alias: "classic",
-    background: "#ccc",
-    targetSize: 80,
-    Grid: Stacked,
-    Tile: () => import("./tiles/classic"),
-  },
-  {
-    name: "Gems",
-    alias: "gems",
-    background: "#fff",
-    targetSize: 50,
-    Grid: Stacked,
-    Tile: () => import("./tiles/gems"),
-    gridStyle: { filter: "blur(1px)" },
-  },
-  {
-    name: "Tunnels",
-    alias: "tunnels",
-    background: "#000",
-    targetSize: 120,
-    Grid: Stacked,
-    Tile: () => import("./tiles/tunnels"),
-    gridStyle: {},
-  },
-  {
-    name: "Neon",
-    alias: "neon",
-    background: "#000",
-    targetSize: 100,
-    Grid: Stacked,
-    Tile: () => import("./tiles/neon"),
-    gridStyle: {},
-  },
-  {
-    name: "Soft Plaid",
-    alias: "soft-plaid",
-    targetSize: 60,
-    Grid: Stacked,
-    Tile: () => import("./tiles/softPlaid"),
-  },
-  {
-    name: "Spectrum",
-    alias: "spectrum",
-    background: "#000",
-    targetSize: 60,
-    Grid: Subway,
-    Tile: () => import("./tiles/spectrum"),
-  },
-  {
-    name: "Mood Rings",
-    alias: "mood-rings",
-    background: "#000",
-    targetSize: 100,
-    Grid: Stacked,
-    Tile: () => import("./tiles/moodRings"),
-  },
-  // {
-  //   name: "Mermaid",
-  //   background: "#eee",
-  //   targetSize: 40,
-  //   Grid: Grids.Subway,
-  //   Tile: () => import("./tiles/mermaid"),
-  // },
-];
+import { modes } from "./Modes";
 
 const App = () => {
-  const modeList = modes();
-  
-  const [currentMode, setCurrentMode] = useState(modeList[0]);
+  const [mode, setMode] = useState(modes[0]);
+
+  const setAlias = (alias) => {
+    const newMode = modes.find((e) => e.alias === alias);
+    if (newMode) setMode(newMode);
+    else console.warn(alias + " is not a valid mode")
+  };
+
   // window.history.replaceState({}, '', `${window.location.pathname}?${queryParams}`);
   useEffect(() => {
     // Handle mode via URL parameters
-  const queryParams = new URLSearchParams(window.location.search);
+    const queryParams = new URLSearchParams(window.location.search);
 
-  const queryMode = queryParams.get("mode");
-  console.log(queryMode)
-  if (queryMode) setCurrentMode(modeList.find((e) => e.alias === queryMode));
+    const queryMode = queryParams.get("mode");
 
-  }, [])
+    if (queryMode) setAlias(queryMode);
+  }, []);
 
-  const menuOptions = modeList.map((mode) => (
+  const menuOptions = modes.map((e) => (
     <button
-      onClick={() => setCurrentMode(mode)}
-      disabled={currentMode.name === mode.name}
-      key={mode.name}
+      onClick={() => setAlias(e.alias)}
+      disabled={mode.alias === e.alias}
+      key={e.alias}
     >
-      {mode.name}
+      {e.name}
     </button>
   ));
 
@@ -144,10 +79,10 @@ const App = () => {
   const [windowWidth, windowHeight] = useWindowDimension();
 
   return (
-    <div className="App" style={{ backgroundColor: currentMode.background }}>
+    <div className="App" style={{ backgroundColor: mode.background }}>
       <Menu />
-      <currentMode.Grid
-        mode={currentMode}
+      <mode.Grid
+        mode={mode}
         windowWidth={windowWidth}
         windowHeight={windowHeight}
       />

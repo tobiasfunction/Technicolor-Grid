@@ -3,7 +3,7 @@ import React, { Suspense } from "react";
 export default function Stacked(props) {
   const tilesPerRow = Math.floor(props.windowWidth / props.mode.targetSize);
   const tileSize = Math.floor(props.windowWidth / tilesPerRow);
-  const targetRowCount = Math.floor(props.windowHeight / tileSize);
+  const targetRowCount = Math.ceil(props.windowHeight / tileSize);
   const tiles = [];
   const Tile = React.lazy(props.mode.Tile);
 
@@ -29,8 +29,8 @@ export default function Stacked(props) {
     <div
       className="grid"
       style={{
-        gridTemplateColumns: `repeat(auto-fit, minmax(${props.mode.targetSize}px, 1fr))`,
-        gridTemplateRows: `repeat(auto-fit, minmax(${props.mode.targetSize}px, 1fr))`,
+        gridTemplateColumns: `repeat(auto-fill, minmax(${props.mode.targetSize}px, 1fr))`,
+        gridTemplateRows: `repeat(auto-fill, minmax(${props.mode.targetSize}px, 1fr))`,
         // height: targetRowCount * tileSize + "px",
         height: "100vh",
         ...props.mode.gridStyle,
