@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/color-grid/static/css/main.8f688ffe.css",
-    "main.js": "/color-grid/static/js/main.fda7bbc1.js",
+    "main.js": "/color-grid/static/js/main.1871c995.js",
     "static/js/562.439ce2f7.chunk.js": "/color-grid/static/js/562.439ce2f7.chunk.js",
     "static/js/435.d2b00474.chunk.js": "/color-grid/static/js/435.d2b00474.chunk.js",
     "static/js/790.e0287389.chunk.js": "/color-grid/static/js/790.e0287389.chunk.js",
@@ -9,10 +9,11 @@
     "static/js/827.7ebf240b.chunk.js": "/color-grid/static/js/827.7ebf240b.chunk.js",
     "static/js/903.142dae7e.chunk.js": "/color-grid/static/js/903.142dae7e.chunk.js",
     "static/js/215.045c4265.chunk.js": "/color-grid/static/js/215.045c4265.chunk.js",
+    "static/js/718.f61ce8b7.chunk.js": "/color-grid/static/js/718.f61ce8b7.chunk.js",
     "static/js/787.33c2c2b2.chunk.js": "/color-grid/static/js/787.33c2c2b2.chunk.js",
     "index.html": "/color-grid/index.html",
     "main.8f688ffe.css.map": "/color-grid/static/css/main.8f688ffe.css.map",
-    "main.fda7bbc1.js.map": "/color-grid/static/js/main.fda7bbc1.js.map",
+    "main.1871c995.js.map": "/color-grid/static/js/main.1871c995.js.map",
     "562.439ce2f7.chunk.js.map": "/color-grid/static/js/562.439ce2f7.chunk.js.map",
     "435.d2b00474.chunk.js.map": "/color-grid/static/js/435.d2b00474.chunk.js.map",
     "790.e0287389.chunk.js.map": "/color-grid/static/js/790.e0287389.chunk.js.map",
@@ -20,10 +21,11 @@
     "827.7ebf240b.chunk.js.map": "/color-grid/static/js/827.7ebf240b.chunk.js.map",
     "903.142dae7e.chunk.js.map": "/color-grid/static/js/903.142dae7e.chunk.js.map",
     "215.045c4265.chunk.js.map": "/color-grid/static/js/215.045c4265.chunk.js.map",
+    "718.f61ce8b7.chunk.js.map": "/color-grid/static/js/718.f61ce8b7.chunk.js.map",
     "787.33c2c2b2.chunk.js.map": "/color-grid/static/js/787.33c2c2b2.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.8f688ffe.css",
-    "static/js/main.fda7bbc1.js"
+    "static/js/main.1871c995.js"
   ]
 }
