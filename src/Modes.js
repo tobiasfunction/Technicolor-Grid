@@ -72,11 +72,20 @@ export const modes = [
     Tile: () => import("./tiles/moodRings"),
   },
   // {
-  //   name: "Mermaid",
-  //   background: "#eee",
-  //   targetSize: 40,
-  //   Grid: Grids.Subway,
-  //   Tile: () => import("./tiles/mermaid"),
+  //   name: "Tile Drop",
+  //   alias: "tile-drop",
+  //   background: "#000",
+  //   targetSize: 90,
+  //   Grid: Stacked,
+  //   Tile: () => import("./tiles/tileDrop"),
   // },
+  {
+    name: "Mermaid",
+    alias: "mermaid",
+    background: "hsl( 215, 75%, 90%)",
+    targetSize: 40,
+    Grid: Subway,
+    Tile: () => import("./tiles/mermaid"),
+  },
 ];
 
