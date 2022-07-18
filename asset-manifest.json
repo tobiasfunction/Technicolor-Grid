@@ -1,11 +1,12 @@
 {
   "files": {
     "main.css": "/color-grid/static/css/main.8f688ffe.css",
-    "main.js": "/color-grid/static/js/main.1871c995.js",
+    "main.js": "/color-grid/static/js/main.faf4fa9d.js",
     "static/js/562.439ce2f7.chunk.js": "/color-grid/static/js/562.439ce2f7.chunk.js",
     "static/js/435.d2b00474.chunk.js": "/color-grid/static/js/435.d2b00474.chunk.js",
     "static/js/790.e0287389.chunk.js": "/color-grid/static/js/790.e0287389.chunk.js",
-    "static/js/253.8def8ede.chunk.js": "/color-grid/static/js/253.8def8ede.chunk.js",
+    "static/css/669.10431001.chunk.css": "/color-grid/static/css/669.10431001.chunk.css",
+    "static/js/669.49670729.chunk.js": "/color-grid/static/js/669.49670729.chunk.js",
     "static/js/827.7ebf240b.chunk.js": "/color-grid/static/js/827.7ebf240b.chunk.js",
     "static/js/903.142dae7e.chunk.js": "/color-grid/static/js/903.142dae7e.chunk.js",
     "static/js/215.045c4265.chunk.js": "/color-grid/static/js/215.045c4265.chunk.js",
@@ -13,11 +14,12 @@
     "static/js/787.33c2c2b2.chunk.js": "/color-grid/static/js/787.33c2c2b2.chunk.js",
     "index.html": "/color-grid/index.html",
     "main.8f688ffe.css.map": "/color-grid/static/css/main.8f688ffe.css.map",
-    "main.1871c995.js.map": "/color-grid/static/js/main.1871c995.js.map",
+    "main.faf4fa9d.js.map": "/color-grid/static/js/main.faf4fa9d.js.map",
     "562.439ce2f7.chunk.js.map": "/color-grid/static/js/562.439ce2f7.chunk.js.map",
     "435.d2b00474.chunk.js.map": "/color-grid/static/js/435.d2b00474.chunk.js.map",
     "790.e0287389.chunk.js.map": "/color-grid/static/js/790.e0287389.chunk.js.map",
-    "253.8def8ede.chunk.js.map": "/color-grid/static/js/253.8def8ede.chunk.js.map",
+    "669.10431001.chunk.css.map": "/color-grid/static/css/669.10431001.chunk.css.map",
+    "669.49670729.chunk.js.map": "/color-grid/static/js/669.49670729.chunk.js.map",
     "827.7ebf240b.chunk.js.map": "/color-grid/static/js/827.7ebf240b.chunk.js.map",
     "903.142dae7e.chunk.js.map": "/color-grid/static/js/903.142dae7e.chunk.js.map",
     "215.045c4265.chunk.js.map": "/color-grid/static/js/215.045c4265.chunk.js.map",
@@ -26,6 +28,6 @@
   },
   "entrypoints": [
     "static/css/main.8f688ffe.css",
-    "static/js/main.1871c995.js"
+    "static/js/main.faf4fa9d.js"
   ]
 }
