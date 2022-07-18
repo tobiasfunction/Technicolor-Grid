@@ -36,15 +36,18 @@ const App = () => {
     if (queryMode) setAlias(queryMode);
   }, []);
 
-  const menuOptions = modes.map((e) => (
-    <button
-      onClick={() => setAlias(e.alias)}
-      disabled={mode.alias === e.alias}
-      key={e.alias}
-    >
-      {e.name}
-    </button>
-  ));
+  const menuOptions = modes.map((e) => {
+    if (!e.hidden)
+      return (
+        <button
+          onClick={() => setAlias(e.alias)}
+          disabled={mode.alias === e.alias}
+          key={e.alias}
+        >
+          {e.name}
+        </button>
+      );
+  });
 
   const Menu = (props) => {
     return (

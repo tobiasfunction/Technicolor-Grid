@@ -39,12 +39,12 @@ button {
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   grid-template-rows: repeat(auto-fit, minmax(100px, 1fr));
   padding: 0;
+  place-items: center;
 }
 
 .tile {
-  /* aspect-ratio: 1/1; */
   box-sizing: border-box;
   height: 100%;
-  place-self: center;
   width: 100%;
 }
+

@@ -1,64 +1,82 @@
+import "./neon.css";
 import React, { useState } from "react";
+import { CSSTransition } from "react-transition-group";
 
-export default function (props) { const [active, setActive] = useState();
-    const [colorOne, setColorOne] = useState();
-    const [colorTwo, setColorTwo] = useState();
-  
-    let whiteNeon = {
-      borderColor: "#fff",
-      borderRadius: "15px",
-      borderStyle: "solid",
-      borderWidth: "2px",
-      boxSizing: "border-box",
-      color: "#fff",
-      filter: active ? "blur(1px)" : "blur(0px)",
-      gridColumn: props.column,
-      gridRow: props.row,
-      height: "76px",
-      opacity: active ? "100%" : "0%",
-      transition: "all 2s",
-      width: "76px",
-    };
-    let colorNeon = {
-      borderColor: colorOne,
-      borderRadius: "15px",
-      borderStyle: "solid",
-      borderWidth: "6px",
-      boxSizing: "border-box",
-      filter: active ? "blur(1px)" : "blur(6px)",
-      gridColumn: props.column,
-      gridRow: props.row,
-      height: "80px",
-      opacity: active ? "100%" : "0%",
-      transition: "all 5s, opacity 2s, filter 2s ease-out, border-color 1s",
-      width: "80px",
-    };
-  
-    return (
-      //
-      <>
-        <div key={1} className="tile" style={colorNeon} />
+export default function (props) {
+  const [inProp, setInProp] = useState(false);
+  const [mainColor, setMainColor] = useState();
+  const [auraColor, setAuraColor] = useState();
+
+  return (
+    <>
+      <CSSTransition // DIFFUSE BACKGROUND GLOW
+        key={props.value + "a"}
+        in={inProp}
+        timeout={{ exit: 3000 }}
+        classNames="neon-aura"
+      >
         <div
-          key={2}
-          className="tile"
-          style={whiteNeon}
-          onMouseEnter={mouseEnter}
-          onMouseLeave={mouseLeave}
-        />
-      </>
-    );
-  
-    function mouseEnter() {
-      const hue = Math.floor(Math.random() * 330);
-      const newColorOne = `hsl(${hue}, 100%, 60%)`;
-      const newColorTwo = `#fff`;
-      setActive(1);
-      setColorOne(newColorOne);
-      setColorTwo(newColorTwo);
-    }
-    function mouseLeave() {
-      setTimeout(() => {
-        setActive(0);
-      }, 1000);
-    }
-  };
+          className="tile neon neon-aura"
+          style={{
+            borderColor: auraColor,
+            gridColumn: props.column,
+            gridRow: props.row,
+          }}
+        ></div>
+      </CSSTransition>
+
+      <CSSTransition // MAIN BOLD COLOR
+        key={props.value + "m"}
+        in={inProp}
+        timeout={{ exit: 2500 }}
+        classNames="neon-main"
+      >
+        <div
+          className="tile neon neon-main"
+          style={{
+            borderColor: mainColor,
+            gridColumn: props.column,
+            gridRow: props.row,
+          }}
+        ></div>
+      </CSSTransition>
+
+      <CSSTransition // THIN WHITE BORDER
+        key={props.value + "w"}
+        in={inProp}
+        timeout={{ exit: 3000 }}
+        classNames="neon-white"
+      >
+        <div
+          className="tile neon neon-white"
+          style={{
+            gridColumn: props.column,
+            gridRow: props.row,
+          }}
+        ></div>
+      </CSSTransition>
+
+      <div // LISTENER TILE
+        key={props.value + "l"}
+        className="tile"
+        style={{
+          gridColumn: props.column,
+          gridRow: props.row,
+          zIndex: 1000,
+        }}
+        onMouseEnter={mouseEnter}
+        onTouchStart={mouseEnter}
+        onMouseLeave={() => setInProp(false)}
+      />
+    </>
+  );
+
+  function mouseEnter() {
+    const hue = Math.floor(Math.random() * 330) + 30;
+    const newColorOne = `hsl(${hue}, 100%, 60%)`;
+    const newColorTwo = `hsl(${hue - 30}, 100%, 60%)`;
+    setMainColor(newColorOne);
+    setAuraColor(newColorTwo);
+    setInProp(true);
+  }
+}

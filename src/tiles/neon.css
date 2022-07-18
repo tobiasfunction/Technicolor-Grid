@@ -1,0 +1,83 @@
+
+
+.neon {
+  aspect-ratio: 1 / 1 !important;
+  border-radius: 15px;
+  border-style: solid;
+  opacity: 0;
+
+}
+
+.neon-main {
+  border-width: 4px;
+  filter: blur(2px);
+  height: 80px;
+  transition: all 2s;
+  width: 80px;
+}
+
+.neon-main-enter {
+    opacity: 0;
+  }
+
+.neon-main-enter-done {
+    opacity: 1;
+  }
+
+.neon-main-exit {
+    opacity: 1;
+  }
+
+.neon-main-exit-done {
+    opacity: 0;
+  }
+
+.neon-white {
+  border-color: #fff;
+  border-width: 2px;
+  filter: blur(1px);
+  height: 78px;
+  transition: all 2s;
+  width: 78px;
+}
+
+.neon-white-enter {
+    opacity: 0;
+  }
+
+.neon-white-enter-done {
+    opacity: .8;
+  }
+
+.neon-white-exit {
+    opacity: .8;
+  }
+
+.neon-white-exit-done {
+    opacity: 0;
+    transition: opacity 3s ease-out;
+  }
+
+.neon-aura {
+  border-width: 4px;
+  filter: blur(10px);
+  height: 80px;
+  transition: all 4s;
+  width: 80px;
+}
+
+.neon-aura-enter {
+    opacity: 0;
+  }
+
+.neon-aura-enter-done {
+    opacity: .6;
+  }
+
+.neon-aura-exit {
+    opacity: .6;
+  }
+
+.neon-aura-exit-done {
+    opacity: 0;
+  }
