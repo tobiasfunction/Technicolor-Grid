@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/color-grid/static/css/main.8f688ffe.css",
-    "main.js": "/color-grid/static/js/main.faf4fa9d.js",
+    "main.css": "/color-grid/static/css/main.4c0af55c.css",
+    "main.js": "/color-grid/static/js/main.2c44d5c8.js",
     "static/js/562.439ce2f7.chunk.js": "/color-grid/static/js/562.439ce2f7.chunk.js",
     "static/js/435.d2b00474.chunk.js": "/color-grid/static/js/435.d2b00474.chunk.js",
     "static/js/790.e0287389.chunk.js": "/color-grid/static/js/790.e0287389.chunk.js",
-    "static/css/669.10431001.chunk.css": "/color-grid/static/css/669.10431001.chunk.css",
-    "static/js/669.49670729.chunk.js": "/color-grid/static/js/669.49670729.chunk.js",
+    "static/css/669.de43aa70.chunk.css": "/color-grid/static/css/669.de43aa70.chunk.css",
+    "static/js/669.90642ead.chunk.js": "/color-grid/static/js/669.90642ead.chunk.js",
     "static/js/827.7ebf240b.chunk.js": "/color-grid/static/js/827.7ebf240b.chunk.js",
     "static/js/903.142dae7e.chunk.js": "/color-grid/static/js/903.142dae7e.chunk.js",
     "static/js/215.045c4265.chunk.js": "/color-grid/static/js/215.045c4265.chunk.js",
     "static/js/718.f61ce8b7.chunk.js": "/color-grid/static/js/718.f61ce8b7.chunk.js",
     "static/js/787.33c2c2b2.chunk.js": "/color-grid/static/js/787.33c2c2b2.chunk.js",
     "index.html": "/color-grid/index.html",
-    "main.8f688ffe.css.map": "/color-grid/static/css/main.8f688ffe.css.map",
-    "main.faf4fa9d.js.map": "/color-grid/static/js/main.faf4fa9d.js.map",
+    "main.4c0af55c.css.map": "/color-grid/static/css/main.4c0af55c.css.map",
+    "main.2c44d5c8.js.map": "/color-grid/static/js/main.2c44d5c8.js.map",
     "562.439ce2f7.chunk.js.map": "/color-grid/static/js/562.439ce2f7.chunk.js.map",
     "435.d2b00474.chunk.js.map": "/color-grid/static/js/435.d2b00474.chunk.js.map",
     "790.e0287389.chunk.js.map": "/color-grid/static/js/790.e0287389.chunk.js.map",
-    "669.10431001.chunk.css.map": "/color-grid/static/css/669.10431001.chunk.css.map",
-    "669.49670729.chunk.js.map": "/color-grid/static/js/669.49670729.chunk.js.map",
+    "669.de43aa70.chunk.css.map": "/color-grid/static/css/669.de43aa70.chunk.css.map",
+    "669.90642ead.chunk.js.map": "/color-grid/static/js/669.90642ead.chunk.js.map",
     "827.7ebf240b.chunk.js.map": "/color-grid/static/js/827.7ebf240b.chunk.js.map",
     "903.142dae7e.chunk.js.map": "/color-grid/static/js/903.142dae7e.chunk.js.map",
     "215.045c4265.chunk.js.map": "/color-grid/static/js/215.045c4265.chunk.js.map",
@@ -27,7 +27,7 @@
     "787.33c2c2b2.chunk.js.map": "/color-grid/static/js/787.33c2c2b2.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.8f688ffe.css",
-    "static/js/main.faf4fa9d.js"
+    "static/css/main.4c0af55c.css",
+    "static/js/main.2c44d5c8.js"
   ]
 }
