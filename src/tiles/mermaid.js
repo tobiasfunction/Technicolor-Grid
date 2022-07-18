@@ -17,7 +17,7 @@ export default function (props) {
         transition: "color 500ms",
         transform: "rotate(30deg)",
         width: "100%",
-        zIndex: 1000 - props.counter,
+        zIndex: 2000 - props.counter,
       }}
       onMouseEnter={mouseEnter}
     />

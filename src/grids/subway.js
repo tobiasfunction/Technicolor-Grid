@@ -30,7 +30,6 @@ export default function Subway(props) {
         </Suspense>
       );
       counter++;
-      if (counter > 360) counter -= 360;
     }
   }
   return (
