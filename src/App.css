@@ -1,10 +1,8 @@
-body {
-  background-color: #fff;
-  overflow: hidden;
-}
-
 button {
-  margin: 10px 2px;
+  border-radius: 5px;
+  font-family: "Anybody", sans-serif;
+  font-weight: 500;
+  margin: 2px 4px;
 }
 
 #buttons {
@@ -26,11 +24,6 @@ button {
 #buttons:hover {
   background-color: rgba(255, 255, 255, 0.9);
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 1);
-}
-
-button {
-  border-radius: 5px;
-  margin: 2px 4px;
 }
 
 .grid {
