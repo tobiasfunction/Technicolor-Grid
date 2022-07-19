@@ -1,11 +1,12 @@
 import React, { Suspense } from "react";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 export default function Stacked(props) {
   const tilesPerRow = Math.floor(props.windowWidth / props.mode.targetSize);
   const tileSize = Math.floor(props.windowWidth / tilesPerRow);
   const targetRowCount = Math.ceil(props.windowHeight / tileSize);
   const tiles = [];
-  const Tile = React.lazy(props.mode.Tile);
+  const Tile = React.useMemo(() => {return React.lazy(props.mode.Tile);}, [props.mode])
 
   let counter = 1;
 

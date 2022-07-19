@@ -8,7 +8,7 @@ export default function Subway(props) {
   const rowCount = targetRowCount;
   const tiles = [];
   let counter = 1;
-  const Tile = React.lazy(props.mode.Tile);
+  const Tile = React.useMemo(() => {return React.lazy(props.mode.Tile);}, [props.mode])
 
   for (let i = 1; i <= rowCount; i++) {
     let tilesThisRow =
