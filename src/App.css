@@ -1,29 +1,68 @@
 button {
-  border-radius: 5px;
+  border-radius: .5em;
+  border-style: none;
   font-family: "Anybody", sans-serif;
   font-weight: 500;
-  margin: 2px 4px;
-}
-
-#buttons {
-  align-items: center;
-  background-color: rgba(255, 255, 255, 0.6);
-  border-radius: 5px;
-  bottom: 10px;
-  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
-  display: flex;
-  flex-wrap:wrap;
-  justify-content: right;
-  padding: 8px 16px;
-  position: absolute;
-  right: 10px;
+  margin: 0.5em;
+  flex-grow: 1;
+  padding: 0.5em .8em;
+  white-space: nowrap;
+  background-color: #fff;
   transition: all 1s;
-  z-index: 999999999;
 }
 
-#buttons:hover {
-  background-color: rgba(255, 255, 255, 0.9);
-  box-shadow: 2px 2px 2px rgba(0, 0, 0, 1);
+button.icon {
+  border-radius: 40%;
+  flex-grow: 0;
+  padding: 4px;
+  line-height: 0;
+}
+
+button:hover:not(:disabled) {
+  background-color: #eee;
+  cursor: pointer;
+}
+
+button:disabled {
+  background-color: #eee;
+  color: #444;
+}
+
+.menu {
+  align-items: center;
+  border-radius: .5em;
+  margin: .5em;
+  max-width:min-content;
+  padding: 4px 4px;
+  position: absolute;
+  right: 0px;
+  z-index: 999999999;
+  transition: all 1s;
+}
+
+.menuOpen {
+  background: linear-gradient(0deg, rgba(255,255,255,.3) 0%, rgba(255,255,255,.8) 100%);
+
+}
+
+.menuControl {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: baseline;
+}
+
+.menuModes {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.title {
+  font-size:1.5em;
+  flex-grow: 1;
+  text-align: center;
+  white-space: nowrap;
+  margin: 0.5em;
+  font-weight: 700;
 }
 
 .grid {
@@ -39,5 +78,5 @@ button {
   box-sizing: border-box;
   height: 100%;
   width: 100%;
-}
 
+}
