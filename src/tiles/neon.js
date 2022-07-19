@@ -1,5 +1,5 @@
 import "./neon.css";
-import React, { useState } from "react";
+import { useState } from "react";
 import { CSSTransition } from "react-transition-group";
 
 export default function (props) {
@@ -62,7 +62,6 @@ export default function (props) {
         style={{
           gridColumn: props.column,
           gridRow: props.row,
-          zIndex: 1000,
         }}
         onMouseEnter={mouseEnter}
         onTouchStart={mouseEnter}

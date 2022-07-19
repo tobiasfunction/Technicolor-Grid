@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 export default function (props) {
   const [colorOne, setColorOne] = useState("#222");
@@ -10,7 +10,6 @@ export default function (props) {
   let size = 100;
   let delay = 0;
   let alternator = true;
-  let zIndex = 0;
 
   while (size > 0) {
     tiles.push(
@@ -26,7 +25,6 @@ export default function (props) {
           transition: "all 1s",
           transitionDelay: delay + "ms",
           width: size + "%",
-          zIndex: zIndex,
         }}
         key={key}
       />
@@ -35,7 +33,6 @@ export default function (props) {
     size -= 25;
     delay += 150;
     alternator = !alternator;
-    zIndex += 10;
   }
 
   return (

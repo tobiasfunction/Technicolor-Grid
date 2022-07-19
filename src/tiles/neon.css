@@ -1,11 +1,8 @@
-
-
 .neon {
   aspect-ratio: 1 / 1 !important;
   border-radius: 15px;
   border-style: solid;
   opacity: 0;
-
 }
 
 .neon-main {
@@ -17,20 +14,20 @@
 }
 
 .neon-main-enter {
-    opacity: 0;
-  }
+  opacity: 0;
+}
 
 .neon-main-enter-done {
-    opacity: 1;
-  }
+  opacity: 1;
+}
 
 .neon-main-exit {
-    opacity: 1;
-  }
+  opacity: 1;
+}
 
 .neon-main-exit-done {
-    opacity: 0;
-  }
+  opacity: 0;
+}
 
 .neon-white {
   border-color: #fff;
@@ -42,21 +39,21 @@
 }
 
 .neon-white-enter {
-    opacity: 0;
-  }
+  opacity: 0;
+}
 
 .neon-white-enter-done {
-    opacity: .8;
-  }
+  opacity: 0.8;
+}
 
 .neon-white-exit {
-    opacity: .8;
-  }
+  opacity: 0.8;
+}
 
 .neon-white-exit-done {
-    opacity: 0;
-    transition: opacity 3s ease-out;
-  }
+  opacity: 0;
+  transition: opacity 3s ease-out;
+}
 
 .neon-aura {
   border-width: 4px;
@@ -67,17 +64,17 @@
 }
 
 .neon-aura-enter {
-    opacity: 0;
-  }
+  opacity: 0;
+}
 
 .neon-aura-enter-done {
-    opacity: .6;
-  }
+  opacity: 0.6;
+}
 
 .neon-aura-exit {
-    opacity: .6;
-  }
+  opacity: 0.6;
+}
 
 .neon-aura-exit-done {
-    opacity: 0;
-  }
+  opacity: 0;
+}

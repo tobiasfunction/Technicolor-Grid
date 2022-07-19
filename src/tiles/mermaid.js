@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 export default function (props) {
   const [color, setColor] = useState("hsl( 215, 75%, 90%)");
@@ -8,14 +8,14 @@ export default function (props) {
     <div
       className="tile"
       style={{
-        boxShadow: `-10px -10px 40px ${border} inset, 2px 2px 10px ${border} inset, -12px 4px 20px black inset, 4px 4px 16px black`,
-        borderRadius: "20% 20% 60% 20%",
         backgroundColor: color,
-        height: "200%",
+        borderRadius: "20% 20% 60% 20%",
+        boxShadow: `-10px -10px 40px ${border} inset, 2px 2px 10px ${border} inset, -12px 4px 20px black inset, 4px 4px 16px black`,
         gridColumn: props.column,
         gridRow: props.row,
-        transition: "color 500ms",
+        height: "200%",
         transform: "rotate(30deg)",
+        transition: "color 500ms",
         width: "100%",
         zIndex: 2000 - props.counter,
       }}

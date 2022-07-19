@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 export default function (props) {
   const [hue, setHue] = useState(props.counter);
   const size = "100%";
   let i = 10;
-
 
   return (
     <div
@@ -20,12 +19,7 @@ export default function (props) {
         height: size,
         opacity: "100%",
       }}
-      onMouseEnter={mouseEnter}
+      onMouseEnter={() => setHue(hue + 10)}
     />
   );
-  function mouseEnter() {
-    let newHue = hue + 10;
-    newHue = newHue < 360 ? newHue : newHue - 360;
-    setHue(hue + 10);
-  }
 }
