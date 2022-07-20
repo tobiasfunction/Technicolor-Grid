@@ -6,17 +6,12 @@ export default function (props) {
 
   return (
     <div
-      className="tile"
+      className="tile mermaid"
       style={{
         backgroundColor: color,
-        borderRadius: "20% 20% 60% 20%",
         boxShadow: `-10px -10px 40px ${border} inset, 2px 2px 10px ${border} inset, -12px 4px 20px black inset, 4px 4px 16px black`,
         gridColumn: props.column,
         gridRow: props.row,
-        height: "200%",
-        transform: "rotate(30deg)",
-        transition: "color 500ms",
-        width: "100%",
         zIndex: 2000 - props.counter,
       }}
       onMouseEnter={mouseEnter}

@@ -5,14 +5,6 @@ import Subway from "./grids/subway";
 
 
 export const modes = [
-  // {
-  //   // "Stratchpad" mode for testing ideas and isolating problems
-  //   name: "Scratchpad",
-  //   background: "#ccc",
-  //   targetSize: 80,
-  //   Grid: ScratchGrid,
-  //   Tile: () => import("./tiles/gems"),
-  // },
   {
     name: "Classic",
     alias: "classic",
@@ -74,10 +66,11 @@ export const modes = [
   // {
   //   name: "Tile Drop",
   //   alias: "tile-drop",
-  //   background: "#000",
+  //   background: "#33c",
   //   targetSize: 90,
   //   Grid: Stacked,
   //   Tile: () => import("./tiles/tileDrop"),
+  //   hidden: true,
   // },
   {
     name: "Mermaid",
@@ -86,6 +79,16 @@ export const modes = [
     targetSize: 40,
     Grid: Subway,
     Tile: () => import("./tiles/mermaid"),
+  },
+    {
+    // "Stratchpad" mode for testing ideas and isolating problems
+    name: "Scratchpad",
+    alias: "scratchpad",
+    background: "#ccc",
+    targetSize: 80,
+    Grid: ScratchGrid,
+    Tile: () => import("./tiles/gems"),
+    hidden: true
   },
 ];
 

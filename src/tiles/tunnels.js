@@ -14,15 +14,12 @@ export default function (props) {
   while (size > 0) {
     tiles.push(
       <div
-        className="tile"
+        className="tile tunnels"
         style={{
           backgroundColor: alternator ? colorTwo : colorOne,
-          boxShadow: "2px 2px 2px #000 inset",
           gridColumn: props.column,
           gridRow: props.row,
           height: size + "%",
-          opacity: "30%",
-          transition: "all 1s",
           transitionDelay: delay + "ms",
           width: size + "%",
         }}

@@ -64,7 +64,6 @@ export default function (props) {
           gridRow: props.row,
         }}
         onMouseEnter={mouseEnter}
-        onTouchStart={mouseEnter}
         onMouseLeave={() => setInProp(false)}
       />
     </>

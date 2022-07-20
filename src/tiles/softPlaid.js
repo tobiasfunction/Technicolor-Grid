@@ -5,23 +5,15 @@ export default function (props) {
 
   return (
     <div
-      className="tile"
+      className="tile softPlaid"
       style={{
         backgroundColor: color,
         gridColumn: props.column,
         gridRow: props.row,
-        height: "135%",
-        mixBlendMode: "multiply",
-        opacity: "100%",
-        transition: "all 100ms",
-        width: "135%",
       }}
-      onMouseEnter={mouseEnter}
+      onMouseEnter={() => setColor(randomColor())}
     />
   );
-  function mouseEnter() {
-    setColor(randomColor());
-  }
 
   function randomColor() {
     const hue = Math.floor(Math.random() * 360);

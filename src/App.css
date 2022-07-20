@@ -1,11 +1,12 @@
 button {
   border-radius: .5em;
   border-style: none;
+  color: #000;
   font-family: "Anybody", sans-serif;
   font-weight: 500;
   margin: 0.5em;
   flex-grow: 1;
-  padding: 0.5em .8em;
+  padding: 0.4em .5em;
   white-space: nowrap;
   background-color: #fff;
   transition: all 1s;

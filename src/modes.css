@@ -1,0 +1,36 @@
+.mermaid {
+  border-radius: 20% 20% 60% 20%;
+  height: 200%;
+  transform: rotate(30deg);
+  width: 100%;
+}
+
+.moodRings {
+  border-radius: 50%;
+  box-shadow: 0 0 6px #fff inset, 0 0 8px #fff inset;
+  height: 170%;
+  mix-blend-mode: difference;
+  width: 170%;
+  z-index: 100;
+}
+
+.softPlaid {
+  height: 135%;
+  mix-blend-mode: multiply;
+  opacity: 100%;
+  transition: background-color 100ms;
+  width: 135%;
+}
+
+.spectrum {
+  border-bottom: 6px solid rgba(0, 0, 0, 0.3);
+  border-left: 6px solid rgba(255, 255, 255, 0.4);
+  border-right: 6px solid rgba(0, 0, 0, 0.4);
+  border-top: 6px solid rgba(255, 255, 255, 0.3);
+}
+
+.tunnels {
+  box-shadow: 2px 2px 2px #000 inset;
+  opacity: 30%;
+  transition: all 1s;
+}

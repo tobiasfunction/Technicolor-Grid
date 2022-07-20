@@ -2,23 +2,15 @@ import { useState } from "react";
 
 export default function (props) {
   const [color, setColor] = useState("#fff");
-  const size = "170%";
 
   return (
     <>
       <div
-        className="tile"
+        className="tile moodRings"
         style={{
           backgroundColor: color,
-          borderRadius: "50%",
-          boxShadow: "0 0 6px #fff inset, 0 0 8px #fff inset",
           gridColumn: props.column,
           gridRow: props.row,
-          height: size,
-          mixBlendMode: "difference",
-          opacity: "100%",
-          width: size,
-          zIndex: "100",
         }}
       />
       <div // Listener tile

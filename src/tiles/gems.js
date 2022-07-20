@@ -5,7 +5,7 @@ export default function (props) {
 
   return (
     <div
-      className="tile"
+      className="tile gems"
       style={{
         backgroundColor: color,
         gridColumn: props.column,

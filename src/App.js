@@ -1,12 +1,13 @@
 import "./App.css";
+import "./modes.css";
 import React, {
   useState,
   useTransition,
   useEffect,
   useLayoutEffect,
 } from "react";
-import { modes } from "./Modes";
 
+import { modes } from "./modes";
 import * as icons from "./icons";
 
 const App = () => {
@@ -61,7 +62,7 @@ const App = () => {
       return (
         <div className="menu menuOpen">
           <div key="control" className="menuControl">
-          <div className="title">Color Grid</div>
+            <div className="title">Color Grid</div>
             <button
               key="gh"
               title="View Code on GitHub"
