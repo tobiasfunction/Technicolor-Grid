@@ -8,8 +8,7 @@ export default function (props) {
       className="tile gems"
       style={{
         backgroundColor: color,
-        gridColumn: props.column,
-        gridRow: props.row,
+        gridArea: props.gridArea,
         transition: "color 500ms",
       }}
       onMouseEnter={mouseEnter}

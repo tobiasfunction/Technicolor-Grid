@@ -8,8 +8,7 @@ export default function (props) {
       className="tile spectrum"
       style={{
         backgroundColor: `hsl(${hue}, 70%, 60%)`,
-        gridColumn: props.column,
-        gridRow: props.row,
+        gridArea: props.gridArea,
       }}
       onMouseEnter={() => setHue(hue + 8)}
     />

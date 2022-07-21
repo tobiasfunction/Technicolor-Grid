@@ -10,8 +10,7 @@ export default function (props) {
       style={{
         backgroundColor: color,
         boxShadow: `-10px -10px 40px ${border} inset, 2px 2px 10px ${border} inset, -12px 4px 20px black inset, 4px 4px 16px black`,
-        gridColumn: props.column,
-        gridRow: props.row,
+        gridArea: props.gridArea,
         zIndex: 2000 - props.counter,
       }}
       onMouseEnter={mouseEnter}

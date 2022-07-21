@@ -17,8 +17,7 @@ export default function (props) {
         className="tile tunnels"
         style={{
           backgroundColor: alternator ? colorTwo : colorOne,
-          gridColumn: props.column,
-          gridRow: props.row,
+          gridArea: props.gridArea,
           height: size + "%",
           transitionDelay: delay + "ms",
           width: size + "%",

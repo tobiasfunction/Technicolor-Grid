@@ -19,8 +19,7 @@ export default function (props) {
           className="tile neon neon-aura"
           style={{
             borderColor: auraColor,
-            gridColumn: props.column,
-            gridRow: props.row,
+            gridArea: props.gridArea,
           }}
         ></div>
       </CSSTransition>
@@ -35,8 +34,7 @@ export default function (props) {
           className="tile neon neon-main"
           style={{
             borderColor: mainColor,
-            gridColumn: props.column,
-            gridRow: props.row,
+            gridArea: props.gridArea,
           }}
         ></div>
       </CSSTransition>
@@ -50,8 +48,7 @@ export default function (props) {
         <div
           className="tile neon neon-white"
           style={{
-            gridColumn: props.column,
-            gridRow: props.row,
+            gridArea: props.gridArea,
           }}
         ></div>
       </CSSTransition>
@@ -60,8 +57,7 @@ export default function (props) {
         key={props.value + "l"}
         className="tile"
         style={{
-          gridColumn: props.column,
-          gridRow: props.row,
+          gridArea: props.gridArea,
         }}
         onMouseEnter={mouseEnter}
         onMouseLeave={() => setInProp(false)}

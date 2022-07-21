@@ -83,12 +83,13 @@ export const modes = [
     {
     // "Stratchpad" mode for testing ideas and isolating problems
     name: "Scratchpad",
-    alias: "scratchpad",
+    alias: "scratch",
     background: "#ccc",
     targetSize: 80,
-    Grid: ScratchGrid,
-    Tile: () => import("./tiles/gems"),
-    hidden: true
+    Grid: Stacked,
+    Tile: () => import("./tiles/scratch"),
+    hidden: true,
+    gridListen: true
   },
 ];
 

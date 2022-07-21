@@ -9,16 +9,14 @@ export default function (props) {
         className="tile moodRings"
         style={{
           backgroundColor: color,
-          gridColumn: props.column,
-          gridRow: props.row,
+          gridArea: props.gridArea,
         }}
       />
       <div // Listener tile
         className="tile"
         onMouseEnter={mouseEnter}
         style={{
-          gridColumn: props.column,
-          gridRow: props.row,
+          gridArea: props.gridArea,
           zIndex: "200",
         }}
       />

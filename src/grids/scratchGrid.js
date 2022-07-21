@@ -5,7 +5,9 @@ export default function ScratchGrid(props) {
   const tileSize = Math.floor(props.windowWidth / tilesPerRow);
   const targetRowCount = Math.floor(props.windowHeight / tileSize);
   const tiles = [];
-  const Tile = React.useMemo(() => {return React.lazy(props.mode.Tile);}, [props.mode])
+  const Tile = React.useMemo(() => {
+    return React.lazy(props.mode.Tile);
+  }, [props.mode]);
 
   let counter = 1;
 

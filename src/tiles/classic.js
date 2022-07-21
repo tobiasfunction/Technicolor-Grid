@@ -8,8 +8,7 @@ export default function (props) {
       className="tile"
       style={{
         backgroundColor: color,
-        gridColumn: props.column,
-        gridRow: props.row,
+        gridArea: props.gridArea,
       }}
       onMouseEnter={mouseEnter}
     />

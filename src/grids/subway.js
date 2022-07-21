@@ -2,6 +2,8 @@ import React, { Suspense } from "react";
 
 export default function Subway(props) {
 
+  // TODO: rework this column/row math. It currently does weird things at certain sizes.
+
   const tilesPerRow = Math.floor(props.windowWidth / props.mode.targetSize);
   const tileSize = Math.floor(props.windowWidth / tilesPerRow);
   const targetRowCount = Math.ceil(props.windowHeight / tileSize);
@@ -17,11 +19,14 @@ export default function Subway(props) {
       let gridColumn =
         i % 2 ? `${j * 2 - 1} / ${j * 2 + 1}` : `${j * 2} / ${j * 2 + 2}`;
       let gridRow = `${i * 2 - 1} / ${i * 2 + 1}`;
+
+      let gridArea= i % 2 ? `${i} / ${j * 2 - 1} / ${i} / ${j * 2 + 1}` : `${i} / ${j * 2} / ${i } / ${j * 2 + 2}`
       tiles.push(
         <Suspense key={i + "/" + j}>
           <Tile
-            column={gridColumn}
-            row={`${i} / ${i}`}
+            row={i}
+            column={j}
+            gridArea={gridArea}
             mode={props.mode}
             size={tileSize}
             value={i + "/" + j}

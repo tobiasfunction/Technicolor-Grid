@@ -3,19 +3,18 @@ import { useState } from "react";
 export default function (props) {
   const [color, setColor] = useState();
 
+  const testBorder = (props.activeRow === props.row || props.activeCol === props.column) ? "2px solid red" : "none";
+
   return (
     <div
       className="tile"
       style={{
+        border: testBorder,
         backgroundColor: color,
-        gridColumn: props.column,
-        gridRow: props.row,
+        gridArea: props.gridArea,
       }}
-      onMouseEnter={mouseEnter}
-    />
+    >
+      <code>{props.activeRow}{"..."}{props.activeCol}</code>
+    </div>
   );
-  function mouseEnter() {
-    const random = Math.floor(Math.random() * 16777215).toString(16);
-    setColor("#" + random);
-  }
 }
