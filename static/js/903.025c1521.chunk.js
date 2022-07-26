@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunktechnicolor_react=self.webpackChunktechnicolor_react||[]).push([[903],{903:function(e,r,t){t.r(r),t.d(r,{default:function(){return o}});var n=t(152),c=t(791),u=t(184);function o(e){var r=(0,c.useState)(e.counter),t=(0,n.Z)(r,2),o=t[0],a=t[1];return(0,u.jsx)("div",{className:"tile spectrum",style:{backgroundColor:"hsl(".concat(o,", 70%, 60%)"),gridArea:e.gridArea},onMouseEnter:function(){return a(o+8)}})}}}]);
+//# sourceMappingURL=903.025c1521.chunk.js.map
