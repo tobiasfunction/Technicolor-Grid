@@ -2,8 +2,6 @@ import ScratchGrid from "./grids/scratchGrid";
 import Stacked from "./grids/stacked";
 import Subway from "./grids/subway";
 
-
-
 export const modes = [
   {
     name: "Classic",
@@ -80,8 +78,10 @@ export const modes = [
     Grid: Subway,
     Tile: () => import("./tiles/mermaid"),
   },
-    {
+  {
     // "Stratchpad" mode for testing ideas and isolating problems
+    // https://tobiasfunction.github.io/color-grid/?mode=scratch
+
     name: "Scratchpad",
     alias: "scratch",
     background: "#ccc",
@@ -91,4 +91,3 @@ export const modes = [
     hidden: true,
   },
 ];
-

@@ -2,12 +2,10 @@ import { useState, useMemo } from "react";
 
 export default function (props) {
   const [color, setColor] = useState();
-  const [wasActive, setWasActive] = useState();
-  // const active = (element) => element == props.coords.join(",");
+  const [wasActive, setWasActive] = useState(false);
   const active = props.activeCoords.some(
     (element) => element == props.coords.join(",")
   );
-  console.log(active);
 
   useMemo(() => {
     if (active && wasActive) return;
@@ -16,7 +14,6 @@ export default function (props) {
       setColor("#" + Math.floor(Math.random() * 16777215).toString(16));
       setWasActive(true);
     }
-    console.log(props.coords);
   }, [props.activeCoords.join(",")]);
   return (
     <div

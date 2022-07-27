@@ -1,24 +1,23 @@
 import React, { useState, Suspense } from "react";
 
 export default function Stacked(props) {
-  const numCols = Math.floor(props.windowWidth / props.mode.targetSize);
-  const tileSize = Math.floor(props.windowWidth / numCols);
-  const numRows = Math.ceil(props.windowHeight / tileSize);
+  const windowWidth = window.innerWidth;
+  const windowHeight = window.innerHeight;
+
+  const numCols = Math.round(windowWidth / props.mode.targetSize);
+  const cellWidth = Math.ceil(windowWidth / numCols);
+  const numRows = Math.round(windowHeight / props.mode.targetSize);
+  const cellHeight = Math.ceil(windowHeight / numRows);
+
   const Tile = React.useMemo(() => {
     return React.lazy(props.mode.Tile);
   }, [props.mode]);
 
   const [activeCoords, setActiveCoords] = useState([]);
 
-  const move = React.useMemo(() => {
-    return activeCoords.join(" ");
-  }, [activeCoords[0]]);
-
   const totalTiles = numCols * numRows;
   const modeTiles = [];
   const listenerTiles = [];
-  const [activeRow, setActiveRow] = useState();
-  const [activeCol, setActiveCol] = useState();
 
   let counter = 1;
 
@@ -28,7 +27,6 @@ export default function Stacked(props) {
       modeTiles.push(
         <Tile // MODE TILE
           key={i + "/" + j}
-          value={i + "/" + j}
           row={i}
           column={j}
           coords={coords}
@@ -37,8 +35,6 @@ export default function Stacked(props) {
           mode={props.mode}
           counter={counter}
           totalTiles={totalTiles}
-          activeRow={activeRow}
-          activeCol={activeCol}
         />
       );
 
@@ -61,13 +57,12 @@ export default function Stacked(props) {
     <div
       className="grid"
       style={{
-        gridTemplateColumns: `repeat(auto-fill, minmax(${props.mode.targetSize}px, 1fr))`,
-        gridTemplateRows: `repeat(auto-fill, minmax(${props.mode.targetSize}px, 1fr))`,
-        height: "100vh",
+        height: numRows * cellHeight + "px",
+        width: numCols * cellWidth + "px",
         ...props.mode.gridStyle,
       }}
-      onPointerEnter={event => pointerAction(event)}
-      onPointerMove={event => pointerAction(event)}
+      onPointerEnter={(event) => pointerAction(event)}
+      onPointerMove={(event) => pointerAction(event)}
     >
       <Suspense>
         {modeTiles} {listenerTiles}
@@ -82,13 +77,9 @@ export default function Stacked(props) {
     );
     const activeCoords = activeElements
       .map((element) => {
-        if (element.attributes.coords)
-          return element.attributes.coords.value;
+        if (element.attributes.coords) return element.attributes.coords.value;
       })
-
       .filter((element) => element);
-
     setActiveCoords(activeCoords);
-
   }
 }

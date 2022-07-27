@@ -103,7 +103,7 @@ const App = () => {
   const [windowWidth, windowHeight] = useWindowDimension();
 
   return (
-    <div className="App" style={{ backgroundColor: mode.background }}>
+    <div className="App" style={{ backgroundColor: mode.background}}>
       <Menu />
       <mode.Grid
         mode={mode}
