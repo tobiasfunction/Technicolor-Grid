@@ -86,10 +86,9 @@ export const modes = [
     alias: "scratch",
     background: "#ccc",
     targetSize: 80,
-    Grid: Stacked,
+    Grid: ScratchGrid,
     Tile: () => import("./tiles/scratch"),
     hidden: true,
-    gridListen: true
   },
 ];
 
