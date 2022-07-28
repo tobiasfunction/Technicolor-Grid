@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunktechnicolor_react=self.webpackChunktechnicolor_react||[]).push([[827],{827:function(r,t,e){e.r(t),e.d(t,{default:function(){return c}});var n=e(152),a=e(791),o=e(184);function c(r){var t=(0,a.useState)(i()),e=(0,n.Z)(t,2),c=e[0],u=e[1];return(0,o.jsx)("div",{className:"tile softPlaid",style:{backgroundColor:c,gridArea:r.gridArea},onMouseEnter:function(){return u(i())}});function i(){var r=Math.floor(360*Math.random());return"hsl(".concat(r,", 60%, 85%)")}}}}]);
-//# sourceMappingURL=827.2abc9949.chunk.js.map

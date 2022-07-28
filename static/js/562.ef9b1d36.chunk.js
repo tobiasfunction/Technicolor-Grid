@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunktechnicolor_react=self.webpackChunktechnicolor_react||[]).push([[562],{562:function(r,t,e){e.r(t),e.d(t,{default:function(){return c}});var n=e(152),a=e(791),o=e(184);function c(r){var t=(0,a.useState)(),e=(0,n.Z)(t,2),c=e[0],u=e[1];return(0,o.jsx)("div",{className:"tile",style:{backgroundColor:c,gridArea:r.gridArea},onMouseEnter:function(){var r=Math.floor(16777215*Math.random()).toString(16);u("#"+r)}})}}}]);
-//# sourceMappingURL=562.ef9b1d36.chunk.js.map
