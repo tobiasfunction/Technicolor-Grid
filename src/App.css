@@ -1,22 +1,22 @@
 button {
+  background-color: #fff;
   border-radius: .5em;
   border-style: none;
   color: #000;
+  flex-grow: 1;
   font-family: "Anybody", sans-serif;
   font-weight: 500;
   margin: 0.5em;
-  flex-grow: 1;
   padding: 0.4em .5em;
-  white-space: nowrap;
-  background-color: #fff;
   transition: all 1s;
+  white-space: nowrap;
 }
 
 button.icon {
   border-radius: 40%;
   flex-grow: 0;
-  padding: 4px;
   line-height: 0;
+  padding: 4px;
 }
 
 button:hover:not(:disabled) {
@@ -37,19 +37,18 @@ button:disabled {
   padding: 4px 4px;
   position: absolute;
   right: 0px;
-  z-index: 999999999;
   transition: all 1s;
+  z-index: 999999999;
 }
 
 .menuOpen {
   background: linear-gradient(0deg, rgba(255,255,255,.3) 0%, rgba(255,255,255,.8) 100%);
-
 }
 
 .menuControl {
+  align-items: baseline;
   display: flex;
   flex-wrap: nowrap;
-  align-items: baseline;
 }
 
 .menuModes {
@@ -58,26 +57,31 @@ button:disabled {
 }
 
 .title {
-  font-size:1.5em;
   flex-grow: 1;
+  font-size:1.5em;
+  font-weight: 700;
+  margin: 0.5em;
   text-align: center;
   white-space: nowrap;
-  margin: 0.5em;
-  font-weight: 700;
 }
 
 .grid {
   display: grid;
   gap: 0;
+  height: 100vh;
+  left: 50%;
+  margin-right: -50%;
   padding: 0;
   place-items: center;
-  height: 100vh;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
   width: 100vw;
 }
 
 .tile {
   box-sizing: border-box;
   height: 100%;
-  width: 100%;
   touch-action: none;
+  width: 100%;
 }

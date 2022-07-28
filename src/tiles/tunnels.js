@@ -1,8 +1,21 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 
 export default function (props) {
   const [colorOne, setColorOne] = useState("#222");
   const [colorTwo, setColorTwo] = useState("#222");
+  const [wasActive, setWasActive] = useState(false);
+
+  const coordsString = props.coords.join(",");
+
+  useMemo(() => {
+    const active = props.activeCoords.includes(coordsString);
+    if (active && wasActive) return;
+    else if (wasActive) return setWasActive(false);
+    else if (active) {
+      changeColor();
+      setWasActive(true);
+    }
+  }, [props.activeCoords.join(",")]);
 
   const tiles = [];
 
@@ -23,6 +36,7 @@ export default function (props) {
           width: size + "%",
         }}
         key={key}
+        coords={props.coords}
       />
     );
     key++;
@@ -31,21 +45,9 @@ export default function (props) {
     alternator = !alternator;
   }
 
-  return (
-    <>
-      {tiles}
-      <div
-        className="tile"
-        style={{
-          gridColumn: props.column,
-          gridRow: props.row,
-          zIndex: 200,
-        }}
-        onMouseEnter={mouseEnter}
-      />
-    </>
-  );
-  function mouseEnter() {
+  return <>{tiles}</>;
+
+  function changeColor() {
     const hue = Math.floor(Math.random() * 330);
     const newColorOne = `hsl(${hue}, 100%, 60%)`;
     const newColorTwo = `hsl(${hue + 20}, 100%, 60%)`;

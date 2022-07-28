@@ -37,6 +37,7 @@ export const modes = [
     Grid: Stacked,
     Tile: () => import("./tiles/neon"),
     gridStyle: {},
+    gridListen: true,
   },
   {
     name: "Soft Plaid",
