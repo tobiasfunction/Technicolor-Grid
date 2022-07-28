@@ -34,6 +34,8 @@ export default function BaseGrid(props) {
       style={{
         width: cellWidth * numCols + "px",
         height: cellHeight * numRows + "px",
+        gridAutoColumns: cellWidth + "px",
+        gridAutoRows: cellHeight + "px",
         ...props.mode.gridStyle,
       }}
       onPointerEnter={(event) => pointerAction(event)}
