@@ -64,7 +64,10 @@ const App = () => {
       return (
         <div className="menu menuOpen">
           <div key="control" className="menuControl">
-            <div className="title">Color Grid</div>
+            <div className="title">
+              <div>Color</div> <div>Grid</div>
+            </div>
+            <div>
             <button
               key="gh"
               title="View Code on GitHub"
@@ -87,6 +90,7 @@ const App = () => {
               <icons.Cross height="1.5em" width="1.5em" />
             </button>
           </div>
+</div>
           <div key="modes" className="menuModes">
             {menuOptions}
           </div>
@@ -105,9 +109,7 @@ const App = () => {
   return (
     <div className="App">
       <Menu />
-      <BaseGrid
-        mode={mode}
-      />
+      <BaseGrid mode={mode} />
     </div>
   );
 };

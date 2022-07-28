@@ -28,12 +28,12 @@ button:disabled {
   background-color: #eee;
   color: #444;
 }
-
 .menu {
   align-items: center;
   border-radius: .5em;
   margin: .5em;
-  max-width:min-content;
+  min-width:min-content;
+  max-width: 16em;
   padding: 4px 4px;
   position: absolute;
   right: 0px;
@@ -48,8 +48,16 @@ button:disabled {
 .menuControl {
   align-items: baseline;
   display: flex;
-  flex-wrap: nowrap;
+  flex-flow:row wrap-reverse;
+  justify-content: end;
+  max-width: 100%;
 }
+
+/* .menuSmallButtons {
+  display: flex;
+  flex-wrap: nowrap;
+  min-width:max-content;
+} */
 
 .menuModes {
   display: flex;
@@ -57,12 +65,15 @@ button:disabled {
 }
 
 .title {
+flex-basis:0.5em;
+  column-gap: 0.5em;
+  display:flex;
   flex-grow: 1;
-  font-size:1.5em;
+  flex-wrap: wrap;
+  font-size:1.4em;
   font-weight: 700;
-  margin: 0.5em;
-  text-align: center;
-  white-space: nowrap;
+  justify-content: center;
+  margin: 0.2em;
 }
 
 .grid {
