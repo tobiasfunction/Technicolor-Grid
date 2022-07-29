@@ -25,8 +25,11 @@ export default function BaseGrid(props) {
   let numRows = Math.round(windowHeight / targetSize);
   const cellHeight = Math.ceil(windowHeight / numRows);
 
-  numCols = numCols + 2;
-  numRows = numRows + 2;
+
+  if (props.mode.plusCols) numCols += props.mode.plusCols
+  if(props.mode.plusRows) numRows += props.mode.plusRows
+  // numCols = numCols + 2;
+  // numRows = numRows + 2;
 
   const Grid = (
     <div
@@ -38,8 +41,11 @@ export default function BaseGrid(props) {
         gridAutoRows: cellHeight + "px",
         ...props.mode.gridStyle,
       }}
-      onPointerEnter={(event) => pointerAction(event)}
-      onPointerMove={(event) => pointerAction(event)}
+      onPointerEnter={pointerAction}
+      onPointerMove={pointerAction}
+      onPointerLeave={()=> setActiveCoords([])}
+      onPointerDown={()=> setActiveCoords([])}
+      onPointerUp={pointerAction}
     >
       <props.mode.Grid
         mode={props.mode}
