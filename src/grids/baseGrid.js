@@ -39,7 +39,7 @@ export default function BaseGrid(props) {
         height: cellHeight * numRows + "px",
         gridAutoColumns: cellWidth + "px",
         gridAutoRows: cellHeight + "px",
-        ...props.mode.gridStyle,
+        ...props.mode.LayoutStyle,
       }}
       onPointerEnter={pointerAction}
       onPointerMove={pointerAction}
@@ -47,7 +47,7 @@ export default function BaseGrid(props) {
       onPointerDown={()=> setActiveCoords([])}
       onPointerUp={pointerAction}
     >
-      <props.mode.Grid
+      <props.mode.Layout
         mode={props.mode}
         numCols={numCols}
         numRows={numRows}

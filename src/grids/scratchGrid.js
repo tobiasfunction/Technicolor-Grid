@@ -59,7 +59,7 @@ export default function Stacked(props) {
       style={{
         height: numRows * cellHeight + "px",
         width: numCols * cellWidth + "px",
-        ...props.mode.gridStyle,
+        ...props.mode.LayoutStyle,
       }}
       onPointerEnter={(event) => pointerAction(event)}
       onPointerMove={(event) => pointerAction(event)}
