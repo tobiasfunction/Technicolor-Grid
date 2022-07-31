@@ -29,7 +29,6 @@ const App = () => {
   };
 
   const Menu = () => {
-    const menuOptions = React.useMemo(() => {
       const menuButtons = [];
       modes.forEach((e) => {
         if (!e.hidden)
@@ -43,8 +42,6 @@ const App = () => {
             </button>
           );
       });
-      return <>{menuButtons}</>;
-    }, [mode]);
 
     if (!menuStatus)
       return (
@@ -57,6 +54,7 @@ const App = () => {
             >
               <icons.Cog height="1.5em" width="1.5em" />
             </button>
+            
           </div>
         </div>
       );
@@ -79,8 +77,9 @@ const App = () => {
                 )
               }
             >
-              <icons.Github height="1.5em" width="1.5em" />
+             <icons.Github height="1.5em" width="1.5em" />
             </button>
+            
             <button
               key="close"
               title="Close Options"
@@ -92,7 +91,7 @@ const App = () => {
           </div>
 </div>
           <div key="modes" className="menuModes">
-            {menuOptions}
+            {menuButtons}
           </div>
         </div>
       );
