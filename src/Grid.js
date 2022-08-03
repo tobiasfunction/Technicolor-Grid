@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from "react";
 
-export default function BaseGrid(props) {
+export default function Grid(props) {
   const [windowWidth, windowHeight] = useWindowSize();
   const [activeCoords, setActiveCoords] = useState([]);
 
