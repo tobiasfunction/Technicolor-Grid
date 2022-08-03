@@ -4,8 +4,7 @@ export default function BaseGrid(props) {
   const [windowWidth, windowHeight] = useWindowSize();
   const [activeCoords, setActiveCoords] = useState([]);
 
-  const modeAlias = props.mode.alias;
-
+  // Figure out target size for grid cells
   const targetSize = useMemo(() => {
     if (windowHeight < 600 || windowWidth < 600) {
       const newSize = Math.ceil(props.mode.targetSize * 0.75);
@@ -18,20 +17,21 @@ export default function BaseGrid(props) {
     } else {
       return props.mode.targetSize;
     }
-  }, [modeAlias, windowHeight, windowWidth]);
+  }, [props.mode.targetSize, windowHeight, windowWidth]);
 
+  // Figure out actual size of grid cells
   let numCols = Math.round(windowWidth / targetSize);
   const cellWidth = Math.ceil(windowWidth / numCols);
   let numRows = Math.round(windowHeight / targetSize);
   const cellHeight = Math.ceil(windowHeight / numRows);
 
+  // Some modes need off-screen grid cells because of overlap
+  if (props.mode.plusCols) numCols += props.mode.plusCols;
+  if (props.mode.plusRows) numRows += props.mode.plusRows;
 
-  if (props.mode.plusCols) numCols += props.mode.plusCols
-  if(props.mode.plusRows) numRows += props.mode.plusRows
-  // numCols = numCols + 2;
-  // numRows = numRows + 2;
+  const Layout = props.mode.Layout || Passthrough;
 
-  const Grid = (
+  return (
     <div
       className="grid"
       style={{
@@ -41,13 +41,13 @@ export default function BaseGrid(props) {
         gridAutoRows: cellHeight + "px",
         ...props.mode.LayoutStyle,
       }}
-      onPointerEnter={pointerAction}
-      onPointerMove={pointerAction}
-      onPointerLeave={()=> setActiveCoords([])}
-      onPointerDown={()=> setActiveCoords([])}
-      onPointerUp={pointerAction}
+      onPointerEnter={handlePointerEvent}
+      onPointerMove={handlePointerEvent}
+      onPointerLeave={() => setActiveCoords([])}
+      onPointerDown={() => setActiveCoords([])}
+      onPointerUp={handlePointerEvent}
     >
-      <props.mode.Layout
+      <Layout
         mode={props.mode}
         numCols={numCols}
         numRows={numRows}
@@ -55,9 +55,8 @@ export default function BaseGrid(props) {
       />
     </div>
   );
-  return Grid;
 
-  function pointerAction(event) {
+  function handlePointerEvent(event) {
     const activeElements = document.elementsFromPoint(
       event.clientX,
       event.clientY
@@ -65,12 +64,30 @@ export default function BaseGrid(props) {
     const activeCoordinates = activeElements
       .map((element) => {
         if (element.attributes.coords) return element.attributes.coords.value;
+        else return "";
       })
-      .filter((element) => element);
+      .filter((element) => element.length);
     setActiveCoords(activeCoordinates);
   }
 }
 
+function Passthrough(props) {
+  const Tiles = useMemo(() => {
+    return React.lazy(props.mode.Tile);
+  }, [props.mode]);
+  return (
+    <React.Suspense>
+      <Tiles
+        mode={props.mode}
+        numCols={props.numCols}
+        numRows={props.numRows}
+        activeCoords={props.activeCoords}
+      />
+    </React.Suspense>
+  );
+}
+
+// Custom hook to keep track of window size
 // source: https://usehooks.com/useWindowSize/
 
 function useWindowSize() {

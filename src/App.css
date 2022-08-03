@@ -49,7 +49,7 @@ button:disabled {
   align-items: baseline;
   display: flex;
   flex-flow:row wrap-reverse;
-  justify-content: end;
+  justify-content: flex-end;
   max-width: 100%;
 }
 

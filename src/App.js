@@ -1,14 +1,12 @@
 import "./App.css";
 import "./modes.css";
+
 import React, {
   useState,
-  useTransition,
   useEffect,
-  useLayoutEffect,
 } from "react";
 
 import BaseGrid from "./grids/baseGrid";
-
 import { modes } from "./modes";
 import * as icons from "./icons";
 
