@@ -92,7 +92,7 @@ export const modes = [
     name: "Scratchpad",
     alias: "scratch",
     background: "#ccc",
-    targetSize: 60,
+    targetSize: 120,
     // Layout: ScratchGrid,
     Tile: () => import("./tiles/scratch"),
     hidden: true,

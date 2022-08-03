@@ -64,7 +64,7 @@ export default function BaseGrid(props) {
     const activeCoordinates = activeElements
       .map((element) => {
         if (element.attributes.coords) return element.attributes.coords.value;
-        else return "";
+        else return [];
       })
       .filter((element) => element.length);
     setActiveCoords(activeCoordinates);

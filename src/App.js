@@ -6,7 +6,7 @@ import React, {
   useEffect,
 } from "react";
 
-import BaseGrid from "./grids/baseGrid";
+import BaseGrid from "./Grid";
 import { modes } from "./modes";
 import * as icons from "./icons";
 
@@ -105,8 +105,8 @@ const App = () => {
 
   return (
     <div className="App">
-      <Menu />
       <BaseGrid mode={mode} />
+      <Menu />
     </div>
   );
 };
