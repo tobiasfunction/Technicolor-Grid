@@ -1,5 +1,7 @@
+// Basic layouts
 const stacked = (i, j) => `${i} / ${j} / ${i} / ${j}`;
-const subway = (i, j) => i % 2 ? [i, j * 2 - 1, i, j * 2 + 1] : [i, j * 2, i, j * 2 + 2];
+const subway = (i, j) =>
+  (i % 2 ? [i, j * 2 - 1, i, j * 2 + 1] : [i, j * 2, i, j * 2 + 2]).join(" / ");
 
 export const modes = [
   // {
@@ -98,4 +100,4 @@ export const modes = [
     Tile: () => import("./tiles/scratch"),
     hidden: true,
   },
-]
+];
