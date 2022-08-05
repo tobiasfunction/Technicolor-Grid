@@ -44,6 +44,7 @@
     ]
   },
   "devDependencies": {
+    "deepmerge-ts": "^4.2.1",
     "gh-pages": "^4.0.0"
   }
 }

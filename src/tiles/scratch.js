@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { deepmerge } from "deepmerge-ts";
 
 export default function (props) {
   const [tileProps, setTileProps, clearTileProps] = useStateMap();
@@ -17,7 +18,9 @@ export default function (props) {
         setTileProps(key, {
           key: key,
           coords: key,
-          className: props.mode.tileClassName ? "tile " + props.mode.tileClassName : "tile",
+          className: props.mode.tileClassName
+            ? "tile " + props.mode.tileClassName
+            : "tile",
           style: {
             backgroundColor: "black",
             gridArea: props.mode.layout(i, j),
@@ -35,8 +38,9 @@ export default function (props) {
 
   function click(coords) {
     const hue = Math.floor(Math.random() * 360);
-    setTileProps(coords, {style: { backgroundColor: `hsl(${hue} 100% 60%)` }}
-    );
+    setTileProps(coords, {
+      style: { backgroundColor: `hsl(${hue} 100% 60%)` },
+    });
   }
 
   const tileArray = [...tileProps.values()].map((element) => (
@@ -47,14 +51,16 @@ export default function (props) {
 }
 
 function useStateMap() {
-const [stateMap, setStateMap] = useState(new Map())
+  const [stateMap, setStateMap] = useState(new Map());
 
   function setter(key, value) {
-    setStateMap(new Map(stateMap.set(key, { ...stateMap.get(key), ...value })));
+    setStateMap(
+      new Map(stateMap.set(key, deepmerge(stateMap.get(key), value)))
+    );
   }
 
-  function clear(){
-    setStateMap(new Map())
+  function clear() {
+    setStateMap(new Map());
   }
 
   return [stateMap, setter, clear];
