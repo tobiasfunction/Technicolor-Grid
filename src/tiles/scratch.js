@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { deepmerge } from "deepmerge-ts";
 
 export default function (props) {
@@ -7,6 +7,8 @@ export default function (props) {
 
   const rows = props.numRows;
   const cols = props.numCols;
+
+  useEffect(clearTileProps, [props.mode.alias])
 
   // layout: stacked
   // order: ascending
