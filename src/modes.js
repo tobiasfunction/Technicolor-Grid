@@ -1,6 +1,5 @@
-import ScratchGrid from "./grids/scratchGrid";
-import Stacked from "./grids/stacked";
-import Subway from "./grids/subway";
+const stacked = (i, j) => `${i} / ${j} / ${i} / ${j}`;
+const subway = (i, j) => i % 2 ? [i, j * 2 - 1, i, j * 2 + 1] : [i, j * 2, i, j * 2 + 2];
 
 export const modes = [
   // {
@@ -93,8 +92,10 @@ export const modes = [
     alias: "scratch",
     background: "#ccc",
     cellTargetSize: 80,
+    tileClassName: "spectrum",
     // Layout: ScratchGrid,
+    layout: stacked,
     Tile: () => import("./tiles/scratch"),
     hidden: true,
   },
-];
+]

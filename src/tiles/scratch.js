@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 export default function (props) {
-  const [tileProps, setTileProps] = useStateMap();
+  const [tileProps, setTileProps, clearTileProps] = useStateMap();
   const [lastActiveCoords, setLastActiveCoords] = useState();
 
   const rows = props.numRows;
@@ -17,9 +17,10 @@ export default function (props) {
         setTileProps(key, {
           key: key,
           coords: key,
-          className: "tile",
-          basestyle: {
-            gridArea: `${i} / ${j} / ${i} / ${j}`,
+          className: props.mode.tileClassName ? "tile " + props.mode.tileClassName : "tile",
+          style: {
+            backgroundColor: "black",
+            gridArea: props.mode.layout(i, j),
           },
         });
       }
@@ -34,12 +35,12 @@ export default function (props) {
 
   function click(coords) {
     const hue = Math.floor(Math.random() * 360);
-    setTileProps(coords, {addedstyle: { backgroundColor: `hsl(${hue} 100% 60%)` }}
+    setTileProps(coords, {style: { backgroundColor: `hsl(${hue} 100% 60%)` }}
     );
   }
 
   const tileArray = [...tileProps.values()].map((element) => (
-    <div {...element} style={{ ...element.basestyle, ...element.addedstyle }} />
+    <div {...element} />
   ));
 
   return <>{tileArray}</>;
@@ -52,5 +53,9 @@ const [stateMap, setStateMap] = useState(new Map())
     setStateMap(new Map(stateMap.set(key, { ...stateMap.get(key), ...value })));
   }
 
-  return [stateMap, setter];
+  function clear(){
+    setStateMap(new Map())
+  }
+
+  return [stateMap, setter, clear];
 }
