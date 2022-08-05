@@ -4,28 +4,27 @@ export default function Grid(props) {
   const [windowWidth, windowHeight] = useWindowSize();
   const [activeCoords, setActiveCoords] = useState([]);
 
-  // Figure out target size for grid cells
-  const targetSize = useMemo(() => {
-    if (windowHeight < 600 || windowWidth < 600) {
-      const newSize = Math.ceil(props.mode.targetSize * 0.75);
-      return newSize;
-    } else if (windowHeight < 800 || windowWidth < 800) {
-      const smallerDimension = Math.min(windowHeight, windowWidth);
-      const newRatio = smallerDimension / 800;
-      const newSize = Math.ceil(props.mode.targetSize * newRatio);
-      return newSize;
-    } else {
-      return props.mode.targetSize;
-    }
-  }, [props.mode.targetSize, windowHeight, windowWidth]);
+  const cellTargetHeight =
+    props.mode.cellTargetHeight || props.mode.cellTargetSize;
+  const cellTargetWidth =
+    props.mode.cellTargetWidth || props.mode.cellTargetSize;
 
-  // Figure out actual size of grid cells
-  let numCols = Math.round(windowWidth / targetSize);
+  // Make cell size responsive to screen size
+  const cellSizeRatio = useMemo(() => {
+    const smallerDimension = Math.min(windowHeight, windowWidth);
+
+    if (smallerDimension < 600) return 0.75;
+    else if (smallerDimension < 800) return smallerDimension / 800;
+    else return 1;
+  }, [windowHeight, windowWidth]);
+
+  // Calculate the number of columns and the size of each cell
+  let numCols = Math.round(windowWidth / (cellTargetWidth * cellSizeRatio));
   const cellWidth = Math.ceil(windowWidth / numCols);
-  let numRows = Math.round(windowHeight / targetSize);
+  let numRows = Math.round(windowHeight / (cellTargetHeight * cellSizeRatio));
   const cellHeight = Math.ceil(windowHeight / numRows);
 
-  // Some modes need off-screen grid cells because of overlap
+  // Some modes need off-screen grid cells to look right
   if (props.mode.plusCols) numCols += props.mode.plusCols;
   if (props.mode.plusRows) numRows += props.mode.plusRows;
 
