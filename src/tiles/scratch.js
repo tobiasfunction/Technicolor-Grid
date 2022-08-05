@@ -24,7 +24,6 @@ export default function (props) {
             ? "tile " + props.mode.tileClassName
             : "tile",
           style: {
-            backgroundColor: "black",
             gridArea: props.mode.layout(i, j),
           },
         });
