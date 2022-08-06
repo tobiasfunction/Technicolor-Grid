@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { deepmerge } from "deepmerge-ts";
+import { useStateMap } from "../customHooks";
+
 
 export default function (props) {
   const [tileProps, setTileProps, clearTileProps] = useStateMap();
@@ -8,10 +9,7 @@ export default function (props) {
   const rows = props.numRows;
   const cols = props.numCols;
 
-  useEffect(clearTileProps, [props.mode.alias])
-
-  // layout: stacked
-  // order: ascending
+  useEffect(clearTileProps, [props.mode.alias]);
 
   for (let i = 1; i <= rows; i++) {
     for (let j = 1; j <= cols; j++) {
@@ -47,22 +45,6 @@ export default function (props) {
   const tileArray = [...tileProps.values()].map((element) => (
     <div {...element} />
   ));
-
   return <>{tileArray}</>;
 }
 
-function useStateMap() {
-  const [stateMap, setStateMap] = useState(new Map());
-
-  function setter(key, value) {
-    setStateMap(
-      new Map(stateMap.set(key, deepmerge(stateMap.get(key), value)))
-    );
-  }
-
-  function clear() {
-    setStateMap(new Map());
-  }
-
-  return [stateMap, setter, clear];
-}
